@@ -5,7 +5,7 @@ I'm building a quote collection for community so that we can save and revisit qu
 
 ## Current Milestone
 - [x] Hello World (repo working, can push to GitHub) ✅
-- [ ] MVP (live on GitHub Pages with a working quote collection)
+- [x] MVP (live on GitHub Pages with a working quote collection) ✅
 
 ## Tech Stack
 - HTML/CSS/JavaScript (vanilla, no framework)
@@ -14,32 +14,43 @@ I'm building a quote collection for community so that we can save and revisit qu
 
 ## How to Run
 - Local: Open index.html in browser
-- Live: [GitHub Pages URL - will add once deployed]
+- Live: https://notaibot.github.io/launchpad/
 
-## Current Status - WHERE WE STOPPED (Dec 25, 2024)
+## Current Status - WHERE WE STOPPED (Dec 26, 2024)
 **Completed:**
 - ✅ Step 1-3: Environment setup complete
 - ✅ Step 4: Project brainstormed - Quote Collection
 - ✅ Step 5: GitHub setup and first repository created
 - ✅ Step 6: Hello World webpage created with Einstein quote
+- ✅ Step 7: GitHub Pages enabled - Site is LIVE!
 
 **In Progress:**
-- 🔄 Step 7: Enable GitHub Pages (NEXT STEP)
-  - Need to enable GitHub Pages to make site live
-  - CLI command didn't work (--enable-pages flag not available)
-  - Next attempt: Use GitHub API via CLI or web UI
+- 🔄 Step 8: Add more quotes and features (NEXT STEP)
 
 ## Next 3 Steps
-1. Enable GitHub Pages (Step 7 - IN PROGRESS)
-2. Verify site is live and accessible from phone
-3. Add more quotes and interactive features (Step 8)
+1. Verify site is accessible from phone
+2. Add more quotes to the collection
+3. Add interactive features (search, categories, etc.)
 
 ## Decisions Made
 - Starting with a simple static site (no database) - easy to deploy and maintain
 - Using vanilla JavaScript (no frameworks) - keeps it simple for learning
 - Focusing on display first, will add features like search/categories later
 
-## What I Learned Today (Dec 25, 2024)
+## What I Learned
+
+**Dec 26, 2024:**
+- Created personal GitHub account (notAIbot) for learning projects
+- Authenticated GitHub CLI with personal account using `gh auth login`
+- Created public repository under personal account
+- Pushed code to new repository using git remotes
+- Enabled GitHub Pages via GitHub API
+- Site is now LIVE at: https://notaibot.github.io/launchpad/
+- Learned about git remotes (can have multiple: origin, personal, etc.)
+- Enterprise GitHub accounts have restrictions on public repos and GitHub Pages
+- Successfully separated personal learning projects from enterprise account
+
+**Dec 25, 2024:**
 - Completed environment setup (Node.js, Claude Code, VS Code, Git, GitHub CLI)
 - Created Projects folder structure
 - Learned basic terminal commands
@@ -50,8 +61,6 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Created first HTML webpage with CSS styling
 - Added first quote (Einstein) to the page
 - Opened webpage locally in browser
-- Repository live at: https://github.com/notAIbot/launchpad
-- Enterprise GitHub accounts have restrictions (can't create public repos)
 
 ## Known Issues
 - None yet - just getting started!
