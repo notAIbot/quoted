@@ -4,7 +4,7 @@
 I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.
 
 ## Current Milestone
-- [ ] Hello World (repo working, can push to GitHub)
+- [x] Hello World (repo working, can push to GitHub) ✅
 - [ ] MVP (live on GitHub Pages with a working quote collection)
 
 ## Tech Stack
@@ -17,8 +17,8 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Live: [GitHub Pages URL - will add once deployed]
 
 ## Next 3 Steps
-1. Set up GitHub account and create repository
-2. Create a simple "Hello World" webpage
+1. Create a simple "Hello World" webpage (index.html)
+2. Enable GitHub Pages and see it live
 3. Add basic quote display functionality
 
 ## Decisions Made
@@ -31,6 +31,10 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Created Projects folder structure
 - Learned basic terminal commands
 - Defined project goal and North Star statement
+- Set up Git repository and made first commit
+- Pushed code to GitHub successfully
+- Learned what commits are (snapshots of project state)
+- Repository live at: https://github.com/notAIbot/launchpad
 
 ## Known Issues
 - None yet - just getting started!
