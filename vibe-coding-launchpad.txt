@@ -1,0 +1,1114 @@
+# Vibe Coding Launchpad
+
+A practical guide for beginners—and the AIs coaching them.
+
+---
+
+## Before You Begin: A Note on Power and Responsibility
+
+Vibe coding is genuinely powerful. With AI assistance, you can build things in hours that would have taken weeks to learn traditionally. That power is real—and so are the consequences.
+
+What can go wrong:
+
+- You can accidentally delete files or overwrite work
+- You can commit secrets (API keys, passwords) to public repositories
+- You can sign up for cloud services that charge real money
+- You can create security vulnerabilities in code you deploy
+- You can push changes that break things
+
+This is not meant to scare you off. These risks exist in all software development. The difference with vibe coding is that you're moving faster, which means mistakes can happen faster too.
+
+The antidote is simple: slow down whenever you're uncertain.
+
+At any point, you can ask Claude Code:
+
+- "What will this command do, exactly?"
+- "Is there any risk of data loss here?"
+- "Could this cost me money?"
+- "What's the worst case if this goes wrong?"
+- "Can we undo this if needed?"
+
+There's no shame in pausing. The best developers—vibe coding or otherwise—are the ones who ask questions before running commands they don't understand.
+
+You're in control. The AI is a powerful tool, but you decide when to go fast and when to slow down.
+
+---
+
+## How This Guide Works
+
+This document serves two purposes:
+
+1. Read it as a human. Work through it top to bottom. Each step has clear goals, instructions, and checkpoints.
+
+2. Use it as an AI prompt. Once you have Claude Code running, drop this file into your project folder and reference it. Claude Code will read this guide and walk you through each step interactively.
+
+The guide is structured so that the first few steps get you set up manually (before AI tools are available), and then Claude Code takes over as your interactive coach for the rest.
+
+---
+
+## Who This Is For
+
+You might be:
+
+- Tech-adjacent (you work with developers but don't code yourself)
+- A lapsed programmer (you took a CS course once and loved it)
+- Completely new and curious
+- Someone who wants to build real things without getting a CS degree first
+
+You should have:
+
+- A personal laptop (Mac or Windows)
+- Willingness to learn by doing
+- A few hours to get started
+
+Important: This guide assumes you're using personal devices and personal data. Corporate environments have their own policies, networks, and tool restrictions that can create friction. Learn on your own machine first.
+
+---
+
+## What You'll Accomplish
+
+Milestone A: "Hello World" Wiring Check
+You'll create a project, commit it to GitHub, and prove your entire setup works end-to-end.
+
+Milestone B: MVP You Can Open on Your Phone
+You'll publish a small interactive webpage using GitHub Pages and view it from your phone.
+
+These two milestones prove you can go from idea to shipped software. Everything after that is just building on this foundation.
+
+---
+
+## Safety and Sanity Rules
+
+These are non-negotiable. They keep you safe, solvent, and sane.
+
+Data Safety:
+- Never put real personal data (social security numbers, medical info, financial details) into public repositories or AI prompts
+- Use fake/sample data in practice projects
+- When in doubt, ask yourself: "Would I be comfortable if this appeared on the front page of the internet?"
+
+Cost Safety:
+- Stick to free tiers and local tools while learning
+- Don't sign up for cloud services until you understand their pricing model
+- GitHub Pages is free. VS Code is free. Claude Code requires a subscription (~$20/month) but that's your main cost
+
+Security Safety:
+- Never commit secrets (API keys, passwords, tokens) to repositories
+- Anything in a static website's HTML/CSS/JavaScript is visible to anyone—it is not secret
+- Enable two-factor authentication on GitHub
+
+The Ceramics Rule:
+A ceramics teacher split their class in two. Half were graded on making one perfect pot. Half were graded on making 50 pounds of pots. By the end, the 50-pounds group was making better pots.
+
+You learn faster by shipping many small imperfect things than by chasing one perfect thing.
+
+This means:
+- Ship something tiny today
+- Improve it tomorrow
+- Repeat
+
+---
+
+## Core Concepts
+
+Hello World:
+The smallest possible success that proves the wiring works. For software, this is typically "can I run code and see output?" For this guide, it's "can I push code to GitHub and see it there?"
+
+MVP (Minimum Viable Product):
+The smallest version that delivers real value. Not feature-complete. Not polished. Just enough to be useful and prove the concept works.
+
+The Vibe Coding Loop:
+Your default workflow:
+
+1. Clarify — What are we building and why?
+2. Slice — What's the smallest next step?
+3. Build — Implement that slice
+4. Verify — Does it work? How do we know?
+5. Commit — Save progress (git)
+6. Reflect — What changed? Do I understand it?
+
+When in doubt, return to this loop. It keeps you from getting lost.
+
+---
+
+## The Recommended Stack
+
+This guide is opinionated. For each tool category, I'll recommend the best current option, explain why briefly, and mention alternatives.
+
+AI Assistant: Claude Code
+Recommended. Claude Code is a command-line AI that can read your files, run commands, and help you build software interactively. It's currently the most capable tool for learning because it can actually do things, not just tell you what to do.
+
+Alternatives: Claude Desktop (chat-based, good for planning), ChatGPT (solid but less integrated), Cursor (AI-native editor)
+
+Code Editor: VS Code
+Recommended. Free, excellent extension ecosystem, widely supported, runs on Mac and Windows. Most tutorials and documentation assume VS Code.
+
+Alternatives: Cursor (AI-built-in, good but newer), Zed (fast, Mac-focused), Sublime Text (lightweight)
+
+Version Control: Git + GitHub + GitHub CLI
+Recommended. Git is the industry standard for tracking code changes. GitHub hosts your code and offers free static site hosting via GitHub Pages. GitHub CLI (gh) makes authentication and repo creation easy from the terminal.
+
+Alternatives: GitLab (similar features), GitHub web UI (fine for browsing, clunky for real work)
+
+Hosting: GitHub Pages
+Recommended. Free static site hosting directly from your GitHub repository. Push code, site updates automatically. Perfect for learning.
+
+Alternatives: Netlify (more features, still free tier), Vercel (great for React/Next.js)
+
+---
+
+## The 10-Step Program
+
+Phase 1: Getting Set Up (Steps 1-3)
+
+These steps happen before Claude Code is running. They're intentionally very prescriptive—follow the instructions exactly.
+
+---
+
+## Step 1: Install the Core Tools
+
+Goal: Get your development environment set up.
+
+Why it matters: You can't iterate if setup friction blocks you. Get this done once, correctly.
+
+What You're Installing:
+
+1. Node.js — JavaScript runtime (required for Claude Code)
+2. Claude Code — Your AI coding assistant
+3. VS Code — Your code editor
+4. Git — Version control
+5. GitHub CLI — Command-line GitHub access
+
+---
+
+### How to Use the Terminal
+
+The terminal is a text-based way to control your computer. Instead of clicking icons, you type commands.
+
+To run commands from this guide:
+
+1. Open the terminal application (instructions below)
+2. You'll see a prompt—a line ending with $ (Mac) or > (Windows)
+3. Type or copy/paste the command exactly as shown
+4. Press Enter to run it
+5. Wait for it to finish before typing the next command
+
+When copying commands from this guide:
+- Copy only the command itself, not any surrounding text
+- Commands in this guide are shown on their own line, indented
+- After pasting, double-check it looks right, then press Enter
+
+If something goes wrong:
+- Read the error message—it often tells you what's wrong
+- You can usually just try again
+- Closing and reopening the terminal can fix many issues
+
+---
+
+### Mac Installation
+
+First, open Terminal:
+- Press Cmd + Space to open Spotlight
+- Type: Terminal
+- Press Enter
+
+You should see a window with a prompt ending in $ or %
+
+---
+
+Install Homebrew (Mac package manager):
+If you don't have Homebrew, install it. Copy and paste this entire line:
+
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+Press Enter. Follow the prompts (you may need to enter your password). This takes a few minutes.
+
+When done, close Terminal completely (Cmd + Q) and reopen it.
+
+---
+
+Install Node.js:
+Type or paste this command and press Enter:
+
+    brew install node
+
+Wait for it to finish.
+
+---
+
+Install Claude Code:
+Type or paste this command and press Enter:
+
+    npm install -g @anthropic-ai/claude-code
+
+---
+
+Install VS Code:
+Download from: https://code.visualstudio.com/
+Open the downloaded file and drag VS Code to your Applications folder.
+
+Or install via Homebrew:
+
+    brew install --cask visual-studio-code
+
+---
+
+Install Git:
+Git is usually pre-installed on Mac. Check by typing:
+
+    git --version
+
+If it shows a version number, you're good. If not, macOS will prompt you to install developer tools—say yes.
+
+---
+
+Install GitHub CLI:
+Type or paste this command and press Enter:
+
+    brew install gh
+
+---
+
+### Windows Installation
+
+First, open PowerShell:
+- Press Win + X (Windows key and X together)
+- Click "Windows PowerShell" or "Terminal"
+
+You should see a window with a prompt ending in >
+
+---
+
+Install Node.js:
+1. Open your web browser
+2. Go to: https://nodejs.org/
+3. Click the big green button that says "LTS" (Long Term Support)
+4. Run the downloaded installer
+5. Click Next through the installer, accepting the defaults
+6. When done, close PowerShell completely and reopen it
+
+---
+
+Install Claude Code:
+Type or paste this command and press Enter:
+
+    npm install -g @anthropic-ai/claude-code
+
+---
+
+Install VS Code:
+1. Go to: https://code.visualstudio.com/
+2. Download and run the installer
+3. Accept the defaults
+
+---
+
+Install Git:
+1. Go to: https://git-scm.com/download/win
+2. Download and run the installer
+3. Accept all the default options (they're sensible)
+4. When done, close PowerShell completely and reopen it
+
+---
+
+Install GitHub CLI:
+1. Go to: https://cli.github.com/
+2. Download and run the installer
+
+Or if you have winget, type:
+
+    winget install GitHub.cli
+
+---
+
+### Verify Your Installations
+
+Run each of these commands, one at a time. Each should show a version number.
+
+Check Node.js:
+
+    node --version
+
+(Should show something like: v20.10.0)
+
+Check Claude Code:
+
+    claude --version
+
+(Should show the Claude Code version)
+
+Check VS Code:
+
+    code --version
+
+(Should show the VS Code version)
+
+Check Git:
+
+    git --version
+
+(Should show something like: git version 2.43.0)
+
+Check GitHub CLI:
+
+    gh --version
+
+(Should show the GitHub CLI version)
+
+Definition of Done:
+All five commands return version numbers without errors.
+
+If Stuck:
+If any command fails, search for "[tool name] installation [Mac/Windows] troubleshooting" or ask Claude Desktop/ChatGPT for help debugging the specific error message you see.
+
+---
+
+## Step 2: Set Up Your Projects Folder and Learn Terminal Basics
+
+Goal: Create a consistent home for your code and learn the terminal commands you actually need.
+
+Why it matters: Claude Code works from whatever folder you launch it in. Having a predictable folder structure keeps everything organized.
+
+---
+
+### Project Naming Conventions
+
+Before creating folders, let's talk about naming. Good folder names are:
+
+- Lowercase (my-project, not My-Project)
+- Use hyphens instead of spaces (my-project, not my project)
+- Short but descriptive (reading-log, not my-super-awesome-reading-log-project-v1)
+- No special characters except hyphens
+
+Examples of good project names:
+- launchpad (your first project—this guide!)
+- reading-log
+- habit-tracker
+- recipe-box
+- personal-site
+
+Examples to avoid:
+- My First Project (spaces, capitals)
+- project1 (not descriptive)
+- my_project_final_v2_FINAL (too long, mixed styles)
+
+---
+
+### Create Your Projects Folder
+
+You want a folder structure like this:
+
+    Your Home Folder
+        Projects/
+            launchpad/
+            reading-log/
+            habit-tracker/
+
+On Mac, your home folder is /Users/yourname/
+On Windows, your home folder is C:\Users\yourname\
+
+---
+
+Mac: Create the Projects folder
+
+Open Terminal if it's not already open.
+
+Create the Projects folder:
+
+    mkdir -p ~/Projects
+
+Navigate into it:
+
+    cd ~/Projects
+
+Verify you're there:
+
+    pwd
+
+(Should show: /Users/yourname/Projects)
+
+---
+
+Windows: Create the Projects folder
+
+Open PowerShell if it's not already open.
+
+Create the Projects folder:
+
+    mkdir ~/Projects
+
+(If it says the folder already exists, that's fine.)
+
+Navigate into it:
+
+    cd ~/Projects
+
+Verify you're there (just type cd alone):
+
+    cd
+
+(Should show your Projects path)
+
+---
+
+### The Terminal Commands You Need
+
+Here are the only commands you need to know right now:
+
+cd foldername
+    Changes into a folder. Example: cd Projects
+
+cd ..
+    Goes up one level (back to parent folder)
+
+ls (Mac) or dir (Windows)
+    Lists files and folders in your current location
+
+mkdir foldername
+    Creates a new folder. Example: mkdir my-project
+
+pwd (Mac) or cd alone (Windows)
+    Shows where you currently are
+
+code .
+    Opens VS Code in the current folder (the dot means "here")
+
+---
+
+### Practice Exercise
+
+Let's practice. Follow along, typing each command:
+
+1. Make sure you're in Projects:
+
+    Mac:
+        cd ~/Projects
+
+    Windows:
+        cd ~/Projects
+
+2. Create a practice folder:
+
+        mkdir practice-folder
+
+3. Go into it:
+
+        cd practice-folder
+
+4. Check that it's empty:
+
+    Mac:
+        ls
+
+    Windows:
+        dir
+
+5. Open VS Code here:
+
+        code .
+
+VS Code should open. You can close it for now.
+
+6. Go back up to Projects:
+
+        cd ..
+
+7. Delete the practice folder (optional):
+
+    Mac:
+        rm -r practice-folder
+
+    Windows:
+        rmdir practice-folder
+
+Definition of Done:
+- Your Projects folder exists
+- You can navigate to it in the terminal
+- You can create a subfolder and open VS Code in it
+- You understand the basic terminal commands
+
+---
+
+## Step 3: The Bootstrap Moment
+
+Goal: Create your first real project folder, add this guide to it, and launch Claude Code.
+
+Why it matters: From here on, Claude Code becomes your interactive coach. It will read this guide and walk you through the remaining steps.
+
+---
+
+Your first project folder will be called "launchpad"—it's where you'll keep this guide and do your initial learning.
+
+---
+
+Mac Instructions:
+
+1. Navigate to Projects:
+
+        cd ~/Projects
+
+2. Create the launchpad folder:
+
+        mkdir launchpad
+
+3. Enter the folder:
+
+        cd launchpad
+
+4. Open VS Code here:
+
+        code .
+
+---
+
+Windows Instructions:
+
+1. Navigate to Projects:
+
+        cd ~/Projects
+
+2. Create the launchpad folder:
+
+        mkdir launchpad
+
+3. Enter the folder:
+
+        cd launchpad
+
+4. Open VS Code here:
+
+        code .
+
+---
+
+### Save This Guide to the Folder
+
+Now you need to get this guide file into your launchpad folder.
+
+Option A: Copy/paste in VS Code
+1. VS Code should be open in your launchpad folder
+2. Click File > New File
+3. Copy this entire guide (all the text)
+4. Paste it into the new file
+5. Save it as: vibe-coding-launchpad.txt
+   (File > Save, or Cmd+S on Mac, Ctrl+S on Windows)
+
+Option B: If you have this as a downloaded file
+1. Find the file in your Downloads
+2. Move or copy it into your Projects/launchpad folder
+
+---
+
+### Launch Claude Code
+
+Back in your terminal (make sure you're in the launchpad folder):
+
+    claude
+
+Claude Code will start up. You'll see a welcome message and a prompt.
+
+---
+
+### Authenticate Claude Code
+
+The first time you run Claude Code, it will ask you to log in to your Anthropic account. Follow the prompts—it will open a browser window for authentication.
+
+If you don't have an Anthropic account yet, you'll need to create one and subscribe to use Claude Code.
+
+---
+
+### Hand Off to Claude Code
+
+Now that Claude Code is running, tell it to read this guide and help you continue.
+
+Type this in Claude Code:
+
+    @vibe-coding-launchpad.txt I've completed Steps 1-3. I'm in my launchpad folder. Please help me continue with Step 4.
+
+Claude Code will read this guide and walk you through the remaining steps interactively.
+
+Definition of Done:
+- Your launchpad folder exists inside Projects
+- This guide file is saved in the launchpad folder
+- Claude Code is running in the launchpad folder
+- It has read this guide and is ready to help
+
+---
+
+## Step 4: Brainstorm Your First Project
+
+Goal: Work WITH Claude Code to pick a project idea and define your North Star.
+
+Why it matters: Now that you have an AI assistant, let it help you brainstorm. It can suggest ideas, reality-check scope, and help you start small.
+
+### For Claude Code (Instructions)
+
+When the user reaches this step, help them brainstorm a project idea. Guide them through:
+
+1. Ask what interests them:
+   - What do they want to track or organize?
+   - What small annoyance could a simple tool solve?
+   - What would be fun to build and show someone?
+
+2. Suggest ideas if they're stuck. Good beginner projects:
+   - Personal todo/task tracker
+   - Hobby log (books read, movies watched, recipes tried)
+   - Learning tracker (skills they're building, progress notes)
+   - Personal glossary (terms and definitions)
+   - Simple habit tracker (did I do the thing today?)
+   - Bookmark organizer (links to save)
+   - "About me" page (simple personal site)
+   - Quote collection
+   - Workout log
+
+3. Help them scope it down:
+   - For their first project, aim for something achievable in a weekend
+   - One core feature, not five
+   - Static website is fine—no database needed
+
+4. Write a North Star statement together:
+   "I'm building [what] for [who] so that [why]."
+
+   Example: "I'm building a reading log for myself so that I can remember what books I've read and what I thought of them."
+
+5. Create a CLAUDE.md file in the launchpad folder with:
+   - The North Star statement
+   - The project idea
+   - First milestone: "Hello World" (repo on GitHub)
+   - Second milestone: "MVP" (live on GitHub Pages)
+
+Definition of Done:
+- User has a project idea they're excited about
+- The idea is appropriately scoped (simple, achievable)
+- A North Star statement is written
+- CLAUDE.md exists with the basic project info
+
+---
+
+## Step 5: GitHub Setup and Your First Repository
+
+Goal: Create a GitHub account, authenticate via the command line, and create your first repository.
+
+Why it matters: GitHub stores your code in the cloud, tracks your history, and will host your website for free.
+
+### For Claude Code (Instructions)
+
+When the user reaches this step, help them:
+
+1. Create a GitHub account (if they don't have one):
+   - Go to https://github.com/signup
+   - Use a personal email
+   - Choose a username they're comfortable with being public
+
+2. Enable two-factor authentication:
+   - Settings > Password and authentication > Two-factor authentication
+
+3. Authenticate GitHub CLI. Run:
+
+        gh auth login
+
+   - Select "GitHub.com"
+   - Select "HTTPS"
+   - Select "Login with a web browser"
+   - Follow the prompts
+
+4. Configure Git identity. Run:
+
+        git config --global user.name "Your Name"
+        git config --global user.email "your.email@example.com"
+
+   Tip: They can use GitHub's no-reply email for privacy:
+   username@users.noreply.github.com
+
+5. Initialize a Git repository in the launchpad folder:
+
+        git init
+
+6. Create a simple README.md with basic info about the project.
+
+7. Make the first commit:
+
+        git add .
+        git commit -m "Initial commit: project setup"
+
+8. Create the GitHub repository and push:
+
+        gh repo create launchpad --public --source=. --remote=origin --push
+
+9. Verify: Have them visit their GitHub profile and confirm the repo exists.
+
+Definition of Done:
+- GitHub account exists with 2FA enabled
+- Running "gh auth status" shows logged in
+- The repository is visible on GitHub
+- The README is visible in the repo
+
+---
+
+## Step 6: Hello World — Your First Webpage
+
+Goal: Create a simple HTML page, commit it, and push it to GitHub.
+
+Why it matters: This is your Hello World—proof that you can create something and ship it.
+
+### For Claude Code (Instructions)
+
+Help the user create a simple index.html with:
+- A title
+- A heading that says something like "Hello, World!"
+- A paragraph with their North Star statement
+- Basic styling (centered, readable font)
+
+Then:
+1. Have them open it locally in a browser to see it works
+2. Commit and push:
+
+        git add .
+        git commit -m "Add Hello World index.html"
+        git push
+
+3. Verify the file appears on GitHub
+
+Definition of Done:
+- index.html opens locally in a browser
+- The file is visible on GitHub
+- They understand they just shipped code
+
+---
+
+## Step 7: MVP — Enable GitHub Pages
+
+Goal: Turn the repository into a live website accessible from any device.
+
+Why it matters: This is the moment it becomes real—a URL you can share.
+
+### For Claude Code (Instructions)
+
+1. Enable GitHub Pages. Either via CLI:
+
+        gh repo edit --enable-pages --pages-source branch=main --pages-source path=/
+
+   Or guide them through the web UI:
+   - Go to the repo on GitHub
+   - Settings > Pages
+   - Source: "Deploy from a branch"
+   - Branch: main, folder: / (root)
+   - Save
+
+2. Wait for deployment (usually 1-2 minutes)
+
+3. Get the URL. The Pages URL is typically:
+   https://username.github.io/launchpad/
+
+4. Have them open it on their phone
+
+5. Make a small change, push, and watch it update:
+   - Edit index.html (change the text)
+   - Commit and push
+   - Refresh the live site
+
+Definition of Done:
+- The site is live at a GitHub Pages URL
+- They can view it on their phone
+- They've seen a change go from code to live site
+
+---
+
+## Step 8: Add One Interactive Feature
+
+Goal: Make the page do something with JavaScript.
+
+Why it matters: This is where it stops feeling like "just files" and starts feeling like software.
+
+### For Claude Code (Instructions)
+
+Help them add ONE simple interactive element. Keep it very simple. Options:
+
+- A button that changes text when clicked
+- A simple counter
+- Current date/time display
+- A greeting based on time of day
+
+Keep it simple. One feature. Commit it:
+
+    git add .
+    git commit -m "Add interactive feature"
+    git push
+
+Definition of Done:
+- The page has one interactive JavaScript feature
+- It works locally and on GitHub Pages
+- They understand what the JavaScript does (at least conceptually)
+
+---
+
+## Step 9: Create Your Project Brain
+
+Goal: Add documentation files that help both you and AI assistants understand the project.
+
+Why it matters: Vibe coding goes off the rails when there's no memory or context. These files ARE the memory.
+
+### For Claude Code (Instructions)
+
+Help them update or create:
+
+README.md — what this project is and how to view it
+CLAUDE.md — the "project brain" with current goals, decisions, and next steps
+
+Make sure CLAUDE.md includes:
+- North Star statement
+- Current milestone status
+- What they've learned so far
+- Next 3 steps
+
+Commit:
+
+    git add .
+    git commit -m "Update project documentation"
+    git push
+
+Definition of Done:
+- README.md and CLAUDE.md exist and are up to date
+- They reflect the actual state of the project
+- The user understands these files help AI assistants understand context
+
+---
+
+## Step 10: Good Engineering — Separate Data from Display
+
+Goal: Learn the beginner version of a fundamental programming concept: separation of concerns.
+
+Why it matters: This is how projects stay maintainable. Instead of editing HTML for every content change, you edit data and the code renders it.
+
+### For Claude Code (Instructions)
+
+Help them refactor their page to use a simple data structure:
+
+1. Create a data file (data.js) with their content as a JavaScript object
+
+2. Update index.html to read from that data and render it
+
+3. Show them: To add a new item, they just edit data.js. No HTML changes needed.
+
+Commit:
+
+    git add .
+    git commit -m "Refactor: separate data from display"
+    git push
+
+Definition of Done:
+- Content is stored in a separate data file
+- The page renders from that data
+- They can add new items by editing only the data file
+- They understand why this is better than hard-coding everything
+
+---
+
+## Bonus: Understanding Secrets (Without Getting Burned)
+
+Goal: Learn the vocabulary and safety patterns around API keys and authentication.
+
+Why it matters: This is where beginners accidentally leak credentials or run up cloud bills. Better to understand the concepts before you need them.
+
+The Critical Rule:
+
+If your code runs in the browser (static site), you cannot safely hide secrets.
+
+Anything in your HTML, CSS, or JavaScript files is visible to anyone who loads the page. View Source exists. This is not a bug—it's how the web works.
+
+Safe Patterns for Beginners:
+
+Pattern 1: Use Public APIs (No Secret Needed)
+Some APIs don't require keys. Good for learning fetch, error handling, and async code without any secret management.
+
+Pattern 2: Local-Only Scripts (Never Deployed)
+For learning secret management:
+1. Create .env file with your secret
+2. Add .env to .gitignore (so it never gets committed)
+3. Create .env.example showing the variable names without values
+4. Write a script that reads from .env
+
+This teaches the pattern without risk of exposing secrets.
+
+Vocabulary:
+
+- API Key: A string that identifies your application to a service
+- Personal Access Token (PAT): A token you generate for CLI/automation (treat like a password)
+- OAuth: A protocol where users grant limited access to their accounts (more complex, save for later)
+- .env file: A file that stores environment variables locally
+- .gitignore: A file that tells Git which files to never commit
+
+Definition of Done:
+- You know what an API key is
+- You know why secrets can't go in front-end code
+- You know the .env + .gitignore pattern
+- You haven't actually leaked any secrets
+
+---
+
+## Appendix A: Project Ideas
+
+Universal, motivating ideas that don't require personal data:
+
+- Personal task tracker — Simple todo list with add/complete/delete
+- Reading/watching log — Track books, movies, shows with notes
+- Learning tracker — Skills you're building, resources, progress
+- Recipe collection — Recipes you like, organized by category
+- Habit tracker — Daily check-ins for habits you're building
+- Link organizer — Bookmarks with categories and notes
+- Personal glossary — Terms and definitions you want to remember
+- About me page — Simple portfolio or personal site
+- Quote collection — Quotes you like, searchable
+- Workout log — Exercises, sets, reps, progress over time
+
+---
+
+## Appendix B: CLAUDE.md Template
+
+Drop this into every project:
+
+# CLAUDE.md — Project Brain
+
+## North Star
+[Two sentences: what this is, who it's for, why it exists]
+
+## Current Milestone
+- [ ] Hello World (repo working, can push)
+- [ ] MVP (live on GitHub Pages)
+- [ ] [Next milestone]
+
+## Tech Stack
+- HTML/CSS/JavaScript (vanilla, no framework)
+- Hosted on GitHub Pages
+- Version control with Git/GitHub
+
+## How to Run
+- Local: Open index.html in browser
+- Live: [GitHub Pages URL]
+
+## Next 3 Steps (keep this short!)
+1.
+2.
+3.
+
+## Decisions Made
+- [Why we chose X over Y]
+
+## What I Learned Today
+-
+
+## Known Issues
+-
+
+---
+
+## Appendix C: Command Reference
+
+Terminal Navigation:
+
+    cd foldername      Change into a folder
+    cd ..              Go up one level
+    ls (Mac)           List files
+    dir (Windows)      List files
+    mkdir name         Create a folder
+    pwd (Mac)          Show current path
+    cd (Windows alone) Show current path
+    code .             Open VS Code here
+
+Git Commands:
+
+    git status                    See what's changed
+    git add .                     Stage all changes
+    git commit -m "message"       Save changes locally
+    git push                      Push to GitHub
+    git pull                      Pull latest from GitHub
+    git log --oneline             View history
+
+GitHub CLI Commands:
+
+    gh auth login                 Log in to GitHub
+    gh auth status                Check login status
+    gh repo create name --public --source=. --push    Create and push repo
+    gh repo view --web            Open repo in browser
+    gh repo edit --enable-pages   Enable GitHub Pages
+
+Claude Code Commands:
+
+    claude                        Start Claude Code
+    @filename                     Reference a file
+    /help                         Show help
+    exit or Ctrl+C                Exit Claude Code
+
+Update Claude Code (run periodically):
+
+    npm update -g @anthropic-ai/claude-code
+
+---
+
+## Final Notes
+
+For Humans Reading This:
+You now have everything you need to go from zero to a live website. The most important thing is to start. Pick a project, follow the steps, ship something imperfect, and iterate.
+
+Remember the ceramics rule: 50 pots beats 1 perfect pot.
+
+For AIs Reading This:
+When a user references this guide:
+1. Work in small steps—one action at a time
+2. Explain what you're doing and why
+3. Verify each step before moving on
+4. Keep CLAUDE.md updated as you progress
+5. Celebrate small wins—shipping is the skill
+
+---
+
+## Epilogue: The Art of Starting Over
+
+Here's something experienced vibe coders know that beginners often don't: it's completely fine to throw everything away and start fresh.
+
+The YOLO Method:
+
+Sometimes the best way to learn is to let Claude Code run wild. Give it a goal, approve changes quickly, and see what happens. Yes, the project might implode. That's the point.
+
+When you YOLO a project, you learn:
+- Where Claude Code excels (boilerplate, standard patterns, well-documented APIs)
+- Where it struggles (complex state, unusual requirements, things that need human judgment)
+- What your own instincts are telling you ("this feels wrong" is valid data)
+
+You're building intuition. That intuition will tell you when to let Claude Code go fast and when to pump the brakes.
+
+The Mini Post-Mortem:
+
+When a project goes sideways—or even when it succeeds—take 10 minutes to reflect:
+
+- What worked well?
+- Where did it get confused or go off track?
+- What would I do differently next time?
+- What did I learn about the tools, the process, or myself?
+
+You can even ask Claude Code to help: "Let's do a quick post-mortem on this project. What went well and what could we improve?"
+
+The Fresh Start:
+
+If a project becomes tangled, you have full permission to:
+
+1. Create a new folder
+2. Ask Claude Code to write a fresh kickoff document based on what you learned
+3. Start clean with better foundations
+
+This isn't failure. It's iteration. Professional developers do this constantly—they call it "refactoring" or "v2" or "let's not talk about the first attempt."
+
+Your project folders are cheap. Your learning is valuable. Don't let sunk cost fallacy keep you stuck in a mess when a fresh start would be faster.
+
+A Final Thought:
+
+The goal isn't to build one perfect thing. The goal is to build your ability to build things.
+
+Every project—successful or failed, finished or abandoned—adds to that ability. The ceramics rule applies to entire projects, not just features.
+
+Make lots of pots. Some will be ugly. Some will crack. And eventually, you'll make something you're proud of.
+
+Now go build something.
+
+---
+
+This guide was designed to be both human-readable and AI-parseable. Feel free to share it, modify it, and use it to help others get started with vibe coding.
