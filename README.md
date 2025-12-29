@@ -8,12 +8,20 @@ This is a simple web-based quote collection built as a learning project followin
 
 ## Current Status
 
-🚧 **In Development** - Working towards MVP
+✅ **MVP Complete** - Live on GitHub Pages!
 
 ### Milestones
-- [ ] Hello World - Repository setup and first commit
-- [ ] MVP - Live site on GitHub Pages with quote display
-- [ ] Additional features (search, categories, etc.)
+- [x] Hello World - Repository setup and first commit ✅
+- [x] MVP - Live site on GitHub Pages with quote display ✅
+- [x] Interactive Features - Add Quote form with JavaScript ✅
+- [ ] Additional features (localStorage, random quote button, delete, etc.)
+
+## Features
+
+- Display inspirational quotes with authors
+- Interactive "Add Quote" form
+- Clean, responsive design
+- Mobile-friendly interface
 
 ## Tech Stack
 
@@ -24,7 +32,7 @@ This is a simple web-based quote collection built as a learning project followin
 ## How to View
 
 - **Local:** Open `index.html` in your browser
-- **Live:** Coming soon (GitHub Pages URL will be added once deployed)
+- **Live:** https://notaibot.github.io/launchpad/
 
 ## Project Goals
 
