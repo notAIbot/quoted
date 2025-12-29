@@ -16,25 +16,26 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Local: Open index.html in browser
 - Live: https://notaibot.github.io/launchpad/
 
-## Current Status - WHERE WE STOPPED (Dec 26, 2024 - Session 2)
+## Current Status - WHERE WE STOPPED (Dec 29, 2024 - Session 3)
 **Completed:**
 - ✅ Step 1-3: Environment setup complete
 - ✅ Step 4: Project brainstormed - Quote Collection
 - ✅ Step 5: GitHub setup and first repository created
 - ✅ Step 6: Hello World webpage created with Einstein quote
 - ✅ Step 7: GitHub Pages enabled - Site is LIVE!
+- ✅ Step 8: Added interactive "Add Quote" form with JavaScript
 - ✅ Created personal GitHub account (notAIbot)
 - ✅ Cleaned all personal information from repository
 - ✅ Site verified working on phone
+- ✅ Form allows users to add quotes dynamically
 
 **Ready to Start:**
-- 🔄 Step 8: Add more quotes and interactive features (NEXT STEP)
-  - Options: Add more quotes OR add interactive JavaScript feature (random quote button, etc.)
+- 🔄 Step 9: Add more features (random quote button, save quotes to localStorage, etc.)
 
 ## Next 3 Steps
-1. Verify site is accessible from phone
-2. Add more quotes to the collection
-3. Add interactive features (search, categories, etc.)
+1. Add localStorage to save quotes (so they don't disappear on page reload)
+2. Add a random quote button feature
+3. Add ability to delete quotes
 
 ## Decisions Made
 - Starting with a simple static site (no database) - easy to deploy and maintain
@@ -42,6 +43,23 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Focusing on display first, will add features like search/categories later
 
 ## What I Learned
+
+**Dec 29, 2024:**
+- Built my first interactive JavaScript feature - an "Add Quote" form
+- Learned how HTML forms work (form, textarea, input elements)
+- Learned how to use JavaScript to:
+  - Get values from form inputs using `.value`
+  - Prevent page reload with `e.preventDefault()`
+  - Listen for events with `addEventListener`
+  - Store data in JavaScript arrays using `push()`
+  - Loop through arrays with `forEach()`
+  - Create HTML elements dynamically with `createElement()`
+  - Add elements to the page with `appendChild()`
+- Learned about CSS styling for forms (focus states, hover effects)
+- Understood the importance of code comments for learning
+- Learned about git remotes and upstream branches
+- Used `git push --set-upstream` to link local branch to remote
+- Successfully pushed changes and saw them go live on GitHub Pages
 
 **Dec 26, 2024:**
 - Created personal GitHub account (notAIbot) for learning projects
@@ -75,7 +93,8 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Opened webpage locally in browser
 
 ## Known Issues
-- None yet - just getting started!
+- Quotes added via the form disappear when you refresh the page (they're only stored in memory, not saved permanently)
+- Next step: Add localStorage to save quotes in the browser
 
 ## Project Scope (MVP)
 - Display a collection of quotes with authors
