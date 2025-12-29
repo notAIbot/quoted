@@ -24,13 +24,15 @@ I'm building a quote collection for community so that we can save and revisit qu
 - ✅ Step 6: Hello World webpage created with Einstein quote
 - ✅ Step 7: GitHub Pages enabled - Site is LIVE!
 - ✅ Step 8: Added interactive "Add Quote" form with JavaScript
+- ✅ Step 9: Updated project documentation (README.md and CLAUDE.md)
+- ✅ Step 10: Separated data from display (created data.js with 5 initial quotes)
 - ✅ Created personal GitHub account (notAIbot)
 - ✅ Cleaned all personal information from repository
 - ✅ Site verified working on phone
-- ✅ Form allows users to add quotes dynamically
+- ✅ Site now displays 5 quotes from data.js on page load
 
 **Ready to Start:**
-- 🔄 Step 9: Add more features (random quote button, save quotes to localStorage, etc.)
+- 🔄 Additional features: localStorage (save quotes permanently), random quote button, delete quotes, etc.
 
 ## Next 3 Steps
 1. Add localStorage to save quotes (so they don't disappear on page reload)
