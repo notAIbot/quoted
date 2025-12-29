@@ -70,6 +70,73 @@
             color: #7f8c8d;
             font-weight: bold;
         }
+
+        /* CSS for the Add Quote form section */
+
+        /* Main container for the form - gives it the white box style */
+        .add-quote-section {
+            background-color: white;
+            padding: 30px;                              /* Space inside the box */
+            border-radius: 8px;                         /* Rounded corners */
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);     /* Subtle shadow for depth */
+            margin-bottom: 30px;                        /* Space below the box */
+        }
+
+        /* Heading inside the form section */
+        .add-quote-section h2 {
+            color: #3498db;                             /* Blue color */
+            margin-top: 0;                              /* Remove space above */
+            margin-bottom: 20px;                        /* Space below heading */
+        }
+
+        /* Each input field group (label + input) */
+        .form-group {
+            margin-bottom: 20px;                        /* Space between form fields */
+        }
+
+        /* Labels for the form inputs */
+        .form-group label {
+            display: block;                             /* Makes label take full width */
+            margin-bottom: 8px;                         /* Space between label and input */
+            color: #2c3e50;                             /* Dark gray color */
+            font-weight: bold;                          /* Make text bold */
+        }
+
+        /* Text inputs and textarea styling */
+        .form-group input,
+        .form-group textarea {
+            width: 100%;                                /* Full width of container */
+            padding: 10px;                              /* Space inside the input */
+            border: 2px solid #ddd;                     /* Light gray border */
+            border-radius: 4px;                         /* Slightly rounded corners */
+            font-size: 1em;                             /* Same size as body text */
+            font-family: inherit;                       /* Use same font as page */
+            box-sizing: border-box;                     /* Include padding in width */
+        }
+
+        /* When user clicks into an input - highlight it with blue border */
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;                              /* Remove default browser outline */
+            border-color: #3498db;                      /* Change border to blue */
+        }
+
+        /* The Add Quote button styling */
+        .add-button {
+            background-color: #3498db;                  /* Blue background */
+            color: white;                               /* White text */
+            padding: 12px 30px;                         /* Space inside button */
+            border: none;                               /* Remove default border */
+            border-radius: 4px;                         /* Rounded corners */
+            font-size: 1em;                             /* Normal text size */
+            font-weight: bold;                          /* Bold text */
+            cursor: pointer;                            /* Show hand cursor on hover */
+        }
+
+        /* When user hovers mouse over the button - make it darker */
+        .add-button:hover {
+            background-color: #2980b9;                  /* Darker blue */
+        }
     </style>
 </head>
 <body>
@@ -81,11 +148,104 @@
         <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
     </div>
 
+    <!-- Original Einstein quote -->
     <div class="quote-container">
         <p class="quote-text">"Strive not to be a success, but rather to be of value."</p>
         <p class="quote-author">— Albert Einstein</p>
     </div>
 
+    <!-- Form Section: Where users can add new quotes -->
+    <div class="add-quote-section">
+        <h2>Add Your Own Quote</h2>
+        <!-- The form element - collects user input -->
+        <form id="quoteForm">
+            <!-- First input group: for the quote text -->
+            <div class="form-group">
+                <label for="quoteText">Quote:</label>
+                <!-- textarea allows multiple lines of text -->
+                <!-- required means user must fill this out -->
+                <textarea id="quoteText" name="quoteText" rows="3" required placeholder="Enter the quote here..."></textarea>
+            </div>
+            <!-- Second input group: for the author name -->
+            <div class="form-group">
+                <label for="quoteAuthor">Author:</label>
+                <!-- input type="text" is a single-line text box -->
+                <input type="text" id="quoteAuthor" name="quoteAuthor" required placeholder="Author name">
+            </div>
+            <!-- Submit button - triggers form submission -->
+            <button type="submit" class="add-button">Add Quote</button>
+        </form>
+    </div>
+
+    <!-- Container where all newly added quotes will appear -->
+    <div id="quotesContainer"></div>
+
     <p class="status">🚀 Your first webpage is live!</p>
+
+    <script>
+        // JavaScript starts here
+
+        // Create an empty array to store all quotes
+        // An array is like a list that can hold multiple items
+        const quotes = [];
+
+        // Get references to HTML elements so we can interact with them
+        // document.getElementById finds an element by its ID
+        const form = document.getElementById('quoteForm');
+        const quotesContainer = document.getElementById('quotesContainer');
+
+        // Listen for when the form is submitted (when user clicks "Add Quote")
+        // addEventListener watches for events (like submit, click, etc.)
+        form.addEventListener('submit', function(e) {
+            // Prevent the page from reloading (default form behavior)
+            e.preventDefault();
+
+            // Get the values that the user typed into the form fields
+            // .value gives us the current text inside an input
+            const quoteText = document.getElementById('quoteText').value;
+            const quoteAuthor = document.getElementById('quoteAuthor').value;
+
+            // Add the new quote to our quotes array
+            // push() adds an item to the end of an array
+            // We're adding an object with two properties: text and author
+            quotes.push({
+                text: quoteText,
+                author: quoteAuthor
+            });
+
+            // Call the function to display all quotes on the page
+            displayQuotes();
+
+            // Clear the form inputs so user can add another quote
+            form.reset();
+        });
+
+        // Function to display all quotes on the page
+        function displayQuotes() {
+            // Clear everything in the container (start fresh)
+            quotesContainer.innerHTML = '';
+
+            // Loop through each quote in the quotes array
+            // forEach runs the function once for each item
+            quotes.forEach(function(quote) {
+                // Create a new div element for this quote
+                const quoteDiv = document.createElement('div');
+
+                // Give it the same class as existing quotes (for styling)
+                quoteDiv.className = 'quote-container';
+
+                // Set the HTML content inside the div
+                // Backticks (`) allow us to use ${} to insert variables
+                quoteDiv.innerHTML = `
+                    <p class="quote-text">"${quote.text}"</p>
+                    <p class="quote-author">— ${quote.author}</p>
+                `;
+
+                // Add this quote div to the page
+                // appendChild adds it as a child of quotesContainer
+                quotesContainer.appendChild(quoteDiv);
+            });
+        }
+    </script>
 </body>
 </html>
