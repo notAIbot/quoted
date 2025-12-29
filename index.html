@@ -148,11 +148,7 @@
         <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
     </div>
 
-    <!-- Original Einstein quote -->
-    <div class="quote-container">
-        <p class="quote-text">"Strive not to be a success, but rather to be of value."</p>
-        <p class="quote-author">— Albert Einstein</p>
-    </div>
+    <!-- Initial quotes will be loaded from data.js and displayed here by JavaScript -->
 
     <!-- Form Section: Where users can add new quotes -->
     <div class="add-quote-section">
@@ -182,12 +178,18 @@
 
     <p class="status">🚀 Your first webpage is live!</p>
 
+    <!-- Load the quote data from external file -->
+    <!-- This must come BEFORE our main script so initialQuotes is available -->
+    <script src="data.js"></script>
+
     <script>
         // JavaScript starts here
 
-        // Create an empty array to store all quotes
-        // An array is like a list that can hold multiple items
-        const quotes = [];
+        // Create an array to store all quotes
+        // We start by loading the initial quotes from data.js
+        // The ... (spread operator) copies all items from initialQuotes into our quotes array
+        // This gives us 5 starting quotes instead of an empty array
+        const quotes = [...initialQuotes];
 
         // Get references to HTML elements so we can interact with them
         // document.getElementById finds an element by its ID
@@ -219,6 +221,10 @@
             // Clear the form inputs so user can add another quote
             form.reset();
         });
+
+        // When the page first loads, display all the initial quotes from data.js
+        // This replaces the hard-coded Einstein quote in HTML
+        displayQuotes();
 
         // Function to display all quotes on the page
         function displayQuotes() {
