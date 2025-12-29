@@ -14,7 +14,7 @@ const initialQuotes = [
         author: "Steve Jobs"
     },
     {
-        text: "Innovation distinguishes between a leader and a follower.",
+        text: "Be the round peg in the square holes.",
         author: "Steve Jobs"
     },
     {
