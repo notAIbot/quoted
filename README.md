@@ -14,12 +14,16 @@ This is a simple web-based quote collection built as a learning project followin
 - [x] Hello World - Repository setup and first commit ✅
 - [x] MVP - Live site on GitHub Pages with quote display ✅
 - [x] Interactive Features - Add Quote form with JavaScript ✅
-- [ ] Additional features (localStorage, random quote button, delete, etc.)
+- [x] localStorage - Quotes persist across page refreshes ✅
+- [x] Delete functionality - Remove unwanted quotes ✅
+- [ ] Additional features (random quote button, search, categories, etc.)
 
 ## Features
 
 - Display inspirational quotes with authors
 - Interactive "Add Quote" form
+- **localStorage persistence** - Your quotes are saved permanently in your browser
+- **Delete button** - Remove quotes you no longer want
 - Clean, responsive design
 - Mobile-friendly interface
 

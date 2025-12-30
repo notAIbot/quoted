@@ -137,6 +137,23 @@
         .add-button:hover {
             background-color: #2980b9;                  /* Darker blue */
         }
+
+        /* Delete button styling */
+        .delete-button {
+            background-color: #e74c3c;                  /* Red background */
+            color: white;                               /* White text */
+            padding: 8px 16px;                          /* Space inside button */
+            border: none;                               /* Remove default border */
+            border-radius: 4px;                         /* Rounded corners */
+            font-size: 0.9em;                           /* Slightly smaller text */
+            cursor: pointer;                            /* Show hand cursor on hover */
+            margin-top: 10px;                           /* Space above button */
+        }
+
+        /* When user hovers over delete button - make it darker red */
+        .delete-button:hover {
+            background-color: #c0392b;                  /* Darker red */
+        }
     </style>
 </head>
 <body>
@@ -185,11 +202,39 @@
     <script>
         // JavaScript starts here
 
+        // localStorage key - this is the name we use to store/retrieve quotes
+        const STORAGE_KEY = 'quoteCollection';
+
+        // Function to save quotes to localStorage
+        // localStorage only stores strings, so we convert the array to JSON
+        function saveQuotes() {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(quotes));
+        }
+
+        // Function to load quotes from localStorage
+        // Returns the saved quotes, or null if nothing is saved yet
+        function loadQuotes() {
+            const saved = localStorage.getItem(STORAGE_KEY);
+            if (saved) {
+                // If we found saved quotes, parse the JSON string back into an array
+                return JSON.parse(saved);
+            }
+            return null;
+        }
+
         // Create an array to store all quotes
-        // We start by loading the initial quotes from data.js
-        // The ... (spread operator) copies all items from initialQuotes into our quotes array
-        // This gives us 5 starting quotes instead of an empty array
-        const quotes = [...initialQuotes];
+        // First, try to load from localStorage
+        // If nothing is saved yet, use the initial quotes from data.js and save them
+        let quotes;
+        const savedQuotes = loadQuotes();
+        if (savedQuotes) {
+            // We have saved quotes - use them
+            quotes = savedQuotes;
+        } else {
+            // No saved quotes yet - use initial quotes and save them for next time
+            quotes = [...initialQuotes];
+            saveQuotes();
+        }
 
         // Get references to HTML elements so we can interact with them
         // document.getElementById finds an element by its ID
@@ -215,6 +260,9 @@
                 author: quoteAuthor
             });
 
+            // Save the updated quotes array to localStorage
+            saveQuotes();
+
             // Call the function to display all quotes on the page
             displayQuotes();
 
@@ -222,8 +270,7 @@
             form.reset();
         });
 
-        // When the page first loads, display all the initial quotes from data.js
-        // This replaces the hard-coded Einstein quote in HTML
+        // When the page first loads, display all the quotes
         displayQuotes();
 
         // Function to display all quotes on the page
@@ -233,7 +280,8 @@
 
             // Loop through each quote in the quotes array
             // forEach runs the function once for each item
-            quotes.forEach(function(quote) {
+            // The second parameter (index) tells us the position of this quote in the array
+            quotes.forEach(function(quote, index) {
                 // Create a new div element for this quote
                 const quoteDiv = document.createElement('div');
 
@@ -242,14 +290,38 @@
 
                 // Set the HTML content inside the div
                 // Backticks (`) allow us to use ${} to insert variables
+                // We add a delete button with a unique data attribute to track which quote it is
                 quoteDiv.innerHTML = `
                     <p class="quote-text">"${quote.text}"</p>
                     <p class="quote-author">— ${quote.author}</p>
+                    <button class="delete-button" data-index="${index}">Delete</button>
                 `;
 
                 // Add this quote div to the page
                 // appendChild adds it as a child of quotesContainer
                 quotesContainer.appendChild(quoteDiv);
+            });
+
+            // After creating all quotes, add click handlers to all delete buttons
+            // querySelectorAll finds all elements that match the selector
+            const deleteButtons = document.querySelectorAll('.delete-button');
+            deleteButtons.forEach(function(button) {
+                button.addEventListener('click', function() {
+                    // Get the index from the button's data attribute
+                    // This tells us which quote to delete
+                    const indexToDelete = parseInt(button.getAttribute('data-index'));
+
+                    // Remove the quote from the array
+                    // splice removes items from an array
+                    // splice(index, 1) means "remove 1 item at this index"
+                    quotes.splice(indexToDelete, 1);
+
+                    // Save the updated quotes to localStorage
+                    saveQuotes();
+
+                    // Re-display all quotes (now one less)
+                    displayQuotes();
+                });
             });
         }
     </script>
