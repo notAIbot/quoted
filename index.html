@@ -154,6 +154,56 @@
         .delete-button:hover {
             background-color: #c0392b;                  /* Darker red */
         }
+
+        /* Random quote section styling */
+        .random-quote-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .random-quote-section h2 {
+            color: #3498db;
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* Random quote button styling */
+        .random-button {
+            background-color: #9b59b6;                  /* Purple background */
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .random-button:hover {
+            background-color: #8e44ad;                  /* Darker purple */
+        }
+
+        /* Show all button styling */
+        .show-all-button {
+            background-color: #27ae60;                  /* Green background */
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            display: none;                              /* Hidden by default */
+        }
+
+        .show-all-button:hover {
+            background-color: #229954;                  /* Darker green */
+        }
     </style>
 </head>
 <body>
@@ -163,6 +213,14 @@
     <div class="north-star">
         <h2>Our Mission</h2>
         <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
+    </div>
+
+    <!-- Random Quote Section -->
+    <div class="random-quote-section">
+        <h2>Feeling Lucky?</h2>
+        <button id="randomButton" class="random-button">Show Random Quote</button>
+        <button id="anotherRandomButton" class="random-button" style="display: none;">Show Another Random Quote</button>
+        <button id="showAllButton" class="show-all-button">Show All Quotes</button>
     </div>
 
     <!-- Initial quotes will be loaded from data.js and displayed here by JavaScript -->
@@ -240,6 +298,12 @@
         // document.getElementById finds an element by its ID
         const form = document.getElementById('quoteForm');
         const quotesContainer = document.getElementById('quotesContainer');
+        const randomButton = document.getElementById('randomButton');
+        const anotherRandomButton = document.getElementById('anotherRandomButton');
+        const showAllButton = document.getElementById('showAllButton');
+
+        // Variable to track if we're showing one random quote or all quotes
+        let showingRandomQuote = false;
 
         // Listen for when the form is submitted (when user clicks "Add Quote")
         // addEventListener watches for events (like submit, click, etc.)
@@ -268,6 +332,34 @@
 
             // Clear the form inputs so user can add another quote
             form.reset();
+        });
+
+        // Random Quote button - show one random quote (initial click)
+        randomButton.addEventListener('click', function() {
+            showingRandomQuote = true;
+            displayRandomQuote();
+            // Hide the initial "Show Random Quote" button
+            // Show both "Show Another Random Quote" and "Show All Quotes" buttons
+            randomButton.style.display = 'none';
+            anotherRandomButton.style.display = 'inline-block';
+            showAllButton.style.display = 'inline-block';
+        });
+
+        // Another Random Quote button - show another random quote
+        anotherRandomButton.addEventListener('click', function() {
+            // Display another random quote
+            displayRandomQuote();
+        });
+
+        // Show All Quotes button - return to showing all quotes
+        showAllButton.addEventListener('click', function() {
+            showingRandomQuote = false;
+            displayQuotes();
+            // Reset buttons: show the initial "Show Random Quote" button
+            // Hide the "Show Another Random Quote" and "Show All Quotes" buttons
+            randomButton.style.display = 'inline-block';
+            anotherRandomButton.style.display = 'none';
+            showAllButton.style.display = 'none';
         });
 
         // When the page first loads, display all the quotes
@@ -323,6 +415,37 @@
                     displayQuotes();
                 });
             });
+        }
+
+        // Function to display one random quote
+        function displayRandomQuote() {
+            // Clear everything in the container (start fresh)
+            quotesContainer.innerHTML = '';
+
+            // Check if we have any quotes to display
+            if (quotes.length === 0) {
+                quotesContainer.innerHTML = '<p style="text-align: center; color: #7f8c8d;">No quotes available. Add some quotes first!</p>';
+                return;
+            }
+
+            // Get a random index from the quotes array
+            // Math.random() gives a number between 0 and 1
+            // Math.floor() rounds down to get a whole number
+            const randomIndex = Math.floor(Math.random() * quotes.length);
+            const quote = quotes[randomIndex];
+
+            // Create a new div element for this quote
+            const quoteDiv = document.createElement('div');
+            quoteDiv.className = 'quote-container';
+
+            // Set the HTML content - no delete button in random mode
+            quoteDiv.innerHTML = `
+                <p class="quote-text">"${quote.text}"</p>
+                <p class="quote-author">— ${quote.author}</p>
+            `;
+
+            // Add this quote div to the page
+            quotesContainer.appendChild(quoteDiv);
         }
     </script>
 </body>

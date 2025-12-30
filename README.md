@@ -16,7 +16,8 @@ This is a simple web-based quote collection built as a learning project followin
 - [x] Interactive Features - Add Quote form with JavaScript ✅
 - [x] localStorage - Quotes persist across page refreshes ✅
 - [x] Delete functionality - Remove unwanted quotes ✅
-- [ ] Additional features (random quote button, search, categories, etc.)
+- [x] Random quote button - Display random quotes on demand ✅
+- [ ] Additional features (search, categories, favorites, etc.)
 
 ## Features
 
@@ -24,6 +25,7 @@ This is a simple web-based quote collection built as a learning project followin
 - Interactive "Add Quote" form
 - **localStorage persistence** - Your quotes are saved permanently in your browser
 - **Delete button** - Remove quotes you no longer want
+- **Random quote display** - View one random quote at a time with "Show Another Random Quote" option
 - Clean, responsive design
 - Mobile-friendly interface
 
