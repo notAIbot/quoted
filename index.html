@@ -403,6 +403,30 @@
                     // This tells us which quote to delete
                     const indexToDelete = parseInt(button.getAttribute('data-index'));
 
+                    // Step 1: Ask for password
+                    // prompt() shows a popup where user can type input
+                    const userPassword = prompt('Enter password to delete this quote:');
+
+                    // Step 2: Check if password is correct
+                    // The secret password is stored here (visible in source code)
+                    const secretPassword = 'udadoise';
+
+                    if (userPassword !== secretPassword) {
+                        // Password is wrong - show error and stop
+                        alert('Incorrect password. Quote not deleted.');
+                        return;
+                    }
+
+                    // Step 3: Password is correct - now ask for confirmation
+                    // confirm() shows a popup with OK and Cancel buttons
+                    const confirmed = confirm('Are you sure you want to delete this quote?');
+
+                    if (!confirmed) {
+                        // User clicked Cancel - stop here
+                        return;
+                    }
+
+                    // Both password correct AND user confirmed - proceed with deletion
                     // Remove the quote from the array
                     // splice removes items from an array
                     // splice(index, 1) means "remove 1 item at this index"

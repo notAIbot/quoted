@@ -24,7 +24,7 @@ This is a simple web-based quote collection built as a learning project followin
 - Display inspirational quotes with authors
 - Interactive "Add Quote" form
 - **localStorage persistence** - Your quotes are saved permanently in your browser
-- **Delete button** - Remove quotes you no longer want
+- **Password-protected delete** - Remove quotes with password confirmation (password: udadoise)
 - **Random quote display** - View one random quote at a time with "Show Another Random Quote" option
 - Clean, responsive design
 - Mobile-friendly interface
