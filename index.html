@@ -470,8 +470,8 @@
 <body>
     <!-- Header Section -->
     <div class="header">
-        <h1>Hello, World!</h1>
-        <p class="tagline">Welcome to our Quote Collection</p>
+        <h1 id="headerQuote" style="font-style: italic;">"Loading..."</h1>
+        <p id="headerAuthor" class="tagline">Welcome to our Quote Collection</p>
         <div class="north-star">
             <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
         </div>
@@ -666,6 +666,17 @@
             // No saved quotes yet OR old quotes without categories - use initial quotes and save them
             quotes = [...initialQuotes];
             saveQuotes();
+        }
+
+        // Display a random quote in the header
+        // Pick a random quote from the initialQuotes array (not user-added quotes)
+        function displayHeaderQuote() {
+            const randomIndex = Math.floor(Math.random() * initialQuotes.length);
+            const randomQuote = initialQuotes[randomIndex];
+
+            // Update the header with the random quote
+            document.getElementById('headerQuote').textContent = '"' + randomQuote.text + '"';
+            document.getElementById('headerAuthor').innerHTML = '— ' + createWikipediaLink(randomQuote.author);
         }
 
         // Get references to HTML elements so we can interact with them
@@ -894,7 +905,8 @@
             showAllButton.style.display = 'none';
         });
 
-        // When the page first loads, display all the quotes
+        // When the page first loads, display random header quote and all quotes
+        displayHeaderQuote();
         displayQuotes();
 
         // Function to display all quotes on the page
