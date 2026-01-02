@@ -74,18 +74,108 @@
             min-width: 0;
         }
 
+        /* Mobile filter button */
+        .mobile-filter-btn {
+            display: none;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .mobile-filter-btn:hover {
+            background-color: #2980b9;
+        }
+
         /* Mobile responsive */
         @media (max-width: 968px) {
             .main-container {
                 flex-direction: column;
             }
 
-            .sidebar {
-                flex: 1;
-                position: relative;
-                max-height: none;
-                overflow-y: visible;
+            /* Show filter button on mobile */
+            .mobile-filter-btn {
+                display: inline-block;
             }
+
+            /* Hide sidebar by default on mobile */
+            .sidebar {
+                display: none;
+                flex: 1;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 80%;
+                max-width: 350px;
+                height: 100vh;
+                background-color: white;
+                z-index: 2000;
+                overflow-y: auto;
+                box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+                padding: 20px;
+            }
+
+            /* Show sidebar when active */
+            .sidebar.active {
+                display: flex;
+                flex-direction: column;
+                animation: slideIn 0.3s ease-out;
+            }
+
+            /* Slide in animation */
+            @keyframes slideIn {
+                from {
+                    transform: translateX(-100%);
+                }
+                to {
+                    transform: translateX(0);
+                }
+            }
+
+            /* Overlay backdrop */
+            .sidebar-overlay {
+                display: none;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0.5);
+                z-index: 1500;
+            }
+
+            .sidebar-overlay.active {
+                display: block;
+            }
+
+            /* Close button for sidebar */
+            .sidebar-close-btn {
+                display: block;
+                background-color: #e74c3c;
+                color: white;
+                border: none;
+                padding: 8px 16px;
+                border-radius: 4px;
+                font-size: 0.9em;
+                font-weight: bold;
+                cursor: pointer;
+                margin-bottom: 15px;
+                align-self: flex-end;
+            }
+
+            .sidebar-close-btn:hover {
+                background-color: #c0392b;
+            }
+        }
+
+        /* Hide close button on desktop */
+        .sidebar-close-btn {
+            display: none;
         }
 
         h1 {
@@ -385,12 +475,17 @@
         <div class="north-star">
             <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
         </div>
+        <button id="mobileFilterBtn" class="mobile-filter-btn">🔍 Search & Filter</button>
     </div>
+
+    <!-- Sidebar overlay for mobile -->
+    <div id="sidebarOverlay" class="sidebar-overlay"></div>
 
     <!-- Main Container with Sidebar and Content -->
     <div class="main-container">
         <!-- Left Sidebar -->
-        <div class="sidebar">
+        <div class="sidebar" id="sidebar">
+            <button id="sidebarCloseBtn" class="sidebar-close-btn">✕ Close</button>
             <!-- Search Section -->
     <div class="search-section">
         <h2>Search Quotes</h2>
@@ -584,6 +679,12 @@
         const searchResultsInfo = document.getElementById('searchResultsInfo');
         const clearFiltersButton = document.getElementById('clearFiltersButton');
 
+        // Mobile filter button elements
+        const mobileFilterBtn = document.getElementById('mobileFilterBtn');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const sidebarCloseBtn = document.getElementById('sidebarCloseBtn');
+
         // Variable to track if we're showing one random quote or all quotes
         let showingRandomQuote = false;
 
@@ -712,6 +813,25 @@
             // Display all quotes
             displayQuotes();
         });
+
+        // Mobile filter button functionality
+        // Open sidebar when filter button is clicked
+        mobileFilterBtn.addEventListener('click', function() {
+            sidebar.classList.add('active');
+            sidebarOverlay.classList.add('active');
+        });
+
+        // Function to close the sidebar
+        function closeSidebar() {
+            sidebar.classList.remove('active');
+            sidebarOverlay.classList.remove('active');
+        }
+
+        // Close sidebar when close button is clicked
+        sidebarCloseBtn.addEventListener('click', closeSidebar);
+
+        // Close sidebar when overlay backdrop is clicked
+        sidebarOverlay.addEventListener('click', closeSidebar);
 
         // Listen for when the form is submitted (when user clicks "Add Quote")
         // addEventListener watches for events (like submit, click, etc.)
