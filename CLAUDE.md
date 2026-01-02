@@ -211,3 +211,4 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Quote of the day API integration
 - Dark mode toggle
 - More quote sources (philosophers, poets, etc.)
+- New skills to add quotes via cli. 
