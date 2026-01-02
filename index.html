@@ -243,6 +243,95 @@
             color: #7f8c8d;
             font-size: 0.9em;
         }
+
+        /* Category filter section styling */
+        .category-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .category-section h2 {
+            color: #3498db;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        .category-group {
+            margin-bottom: 20px;
+        }
+
+        .category-group h3 {
+            color: #2c3e50;
+            font-size: 1em;
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .category-checkboxes {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .category-checkbox {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            background-color: #ecf0f1;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .category-checkbox:hover {
+            background-color: #d5dbdc;
+        }
+
+        .category-checkbox input[type="checkbox"] {
+            margin-right: 6px;
+            cursor: pointer;
+        }
+
+        .category-checkbox label {
+            cursor: pointer;
+            font-size: 0.9em;
+            user-select: none;
+        }
+
+        .clear-filters-button {
+            background-color: #95a5a6;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 4px;
+            font-size: 0.9em;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .clear-filters-button:hover {
+            background-color: #7f8c8d;
+        }
+
+        /* Category tags on quotes */
+        .quote-categories {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+
+        .category-tag {
+            display: inline-block;
+            padding: 4px 10px;
+            background-color: #3498db;
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8em;
+        }
     </style>
 </head>
 <body>
@@ -259,6 +348,93 @@
         <h2>Search Quotes</h2>
         <input type="text" id="searchInput" placeholder="Search by quote text or author name...">
         <div id="searchResultsInfo" class="search-results-info"></div>
+    </div>
+
+    <!-- Category Filter Section -->
+    <div class="category-section">
+        <h2>Filter by Category</h2>
+
+        <div class="category-group">
+            <h3>Source</h3>
+            <div class="category-checkboxes" id="sourceCategories">
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-tech" value="Tech">
+                    <label for="cat-tech">Tech</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-cricket" value="Cricket">
+                    <label for="cat-cricket">Cricket</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-movies" value="Movies">
+                    <label for="cat-movies">Movies</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-hollywood" value="Hollywood">
+                    <label for="cat-hollywood">Hollywood</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-bollywood" value="Bollywood">
+                    <label for="cat-bollywood">Bollywood</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-sports" value="Sports">
+                    <label for="cat-sports">Sports</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-leaders" value="Leaders">
+                    <label for="cat-leaders">Leaders</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="category-group">
+            <h3>Theme</h3>
+            <div class="category-checkboxes" id="themeCategories">
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-motivation" value="Motivation">
+                    <label for="cat-motivation">Motivation</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-success" value="Success">
+                    <label for="cat-success">Success</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-failure" value="Failure">
+                    <label for="cat-failure">Failure</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-dreams" value="Dreams">
+                    <label for="cat-dreams">Dreams</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-hardwork" value="Hard Work">
+                    <label for="cat-hardwork">Hard Work</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-leadership" value="Leadership">
+                    <label for="cat-leadership">Leadership</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-innovation" value="Innovation">
+                    <label for="cat-innovation">Innovation</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-perseverance" value="Perseverance">
+                    <label for="cat-perseverance">Perseverance</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-wisdom" value="Wisdom">
+                    <label for="cat-wisdom">Wisdom</label>
+                </div>
+                <div class="category-checkbox">
+                    <input type="checkbox" id="cat-courage" value="Courage">
+                    <label for="cat-courage">Courage</label>
+                </div>
+            </div>
+        </div>
+
+        <button id="clearFiltersButton" class="clear-filters-button">Clear All Filters</button>
     </div>
 
     <!-- Random Quote Section -->
@@ -331,11 +507,16 @@
         // If nothing is saved yet, use the initial quotes from data.js and save them
         let quotes;
         const savedQuotes = loadQuotes();
-        if (savedQuotes) {
-            // We have saved quotes - use them
+
+        // Check if saved quotes have categories - if not, we need to reload from initialQuotes
+        const needsUpdate = savedQuotes && savedQuotes.length > 0 &&
+                           (!savedQuotes[0].categories || !Array.isArray(savedQuotes[0].categories));
+
+        if (savedQuotes && !needsUpdate) {
+            // We have saved quotes with categories - use them
             quotes = savedQuotes;
         } else {
-            // No saved quotes yet - use initial quotes and save them for next time
+            // No saved quotes yet OR old quotes without categories - use initial quotes and save them
             quotes = [...initialQuotes];
             saveQuotes();
         }
@@ -349,6 +530,7 @@
         const showAllButton = document.getElementById('showAllButton');
         const searchInput = document.getElementById('searchInput');
         const searchResultsInfo = document.getElementById('searchResultsInfo');
+        const clearFiltersButton = document.getElementById('clearFiltersButton');
 
         // Variable to track if we're showing one random quote or all quotes
         let showingRandomQuote = false;
@@ -356,28 +538,41 @@
         // Variable to track the current search term
         let currentSearchTerm = '';
 
-        // Function to filter quotes based on search term
-        // Returns an array of quotes that match the search
+        // Set to track selected categories (using Set for easy add/remove)
+        let selectedCategories = new Set();
+
+        // Function to filter quotes based on search term and categories
+        // Returns an array of quotes that match the filters
         function getFilteredQuotes() {
-            // If there's no search term, return all quotes
-            if (!currentSearchTerm) {
-                return quotes;
+            let filtered = quotes;
+
+            // Filter by search term
+            if (currentSearchTerm) {
+                const searchLower = currentSearchTerm.toLowerCase();
+                filtered = filtered.filter(function(quote) {
+                    const textLower = quote.text.toLowerCase();
+                    const authorLower = quote.author.toLowerCase();
+                    return textLower.includes(searchLower) || authorLower.includes(searchLower);
+                });
             }
 
-            // Convert search term to lowercase for case-insensitive search
-            const searchLower = currentSearchTerm.toLowerCase();
+            // Filter by categories (if any are selected)
+            // Uses AND logic - quote must have ALL selected categories
+            if (selectedCategories.size > 0) {
+                filtered = filtered.filter(function(quote) {
+                    // Check if quote has categories property
+                    if (!quote.categories || !Array.isArray(quote.categories)) {
+                        return false;
+                    }
+                    // Check if quote has ALL of the selected categories
+                    // Convert Set to Array and check if every selected category is in the quote
+                    return Array.from(selectedCategories).every(function(selectedCat) {
+                        return quote.categories.includes(selectedCat);
+                    });
+                });
+            }
 
-            // Use filter() to create a new array with only matching quotes
-            // filter() keeps items where the function returns true
-            return quotes.filter(function(quote) {
-                // Convert quote text and author to lowercase
-                const textLower = quote.text.toLowerCase();
-                const authorLower = quote.author.toLowerCase();
-
-                // Check if search term is found in either text or author
-                // includes() returns true if the string contains the search term
-                return textLower.includes(searchLower) || authorLower.includes(searchLower);
-            });
+            return filtered;
         }
 
         // Listen for when user types in the search box
@@ -395,6 +590,46 @@
             }
 
             // Display the filtered quotes
+            displayQuotes();
+        });
+
+        // Listen for category checkbox changes
+        // Get all checkboxes with type="checkbox" inside category sections
+        const categoryCheckboxes = document.querySelectorAll('.category-checkbox input[type="checkbox"]');
+        categoryCheckboxes.forEach(function(checkbox) {
+            checkbox.addEventListener('change', function() {
+                // When checkbox is checked, add category to selectedCategories
+                // When unchecked, remove it
+                if (this.checked) {
+                    selectedCategories.add(this.value);
+                } else {
+                    selectedCategories.delete(this.value);
+                }
+
+                // If we're in random quote mode, exit it when user filters
+                if (showingRandomQuote) {
+                    showingRandomQuote = false;
+                    randomButton.style.display = 'inline-block';
+                    anotherRandomButton.style.display = 'none';
+                    showAllButton.style.display = 'none';
+                }
+
+                // Display the filtered quotes
+                displayQuotes();
+            });
+        });
+
+        // Clear all filters button
+        clearFiltersButton.addEventListener('click', function() {
+            // Uncheck all category checkboxes
+            categoryCheckboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+
+            // Clear the selected categories set
+            selectedCategories.clear();
+
+            // Display all quotes
             displayQuotes();
         });
 
@@ -500,9 +735,20 @@
                 // Set the HTML content inside the div
                 // Backticks (`) allow us to use ${} to insert variables
                 // We add a delete button with a unique data attribute to track which quote it is
+                // Build category tags HTML if quote has categories
+                let categoriesHTML = '';
+                if (quote.categories && Array.isArray(quote.categories) && quote.categories.length > 0) {
+                    categoriesHTML = '<div class="quote-categories">' +
+                        quote.categories.map(function(cat) {
+                            return '<span class="category-tag">' + cat + '</span>';
+                        }).join('') +
+                        '</div>';
+                }
+
                 quoteDiv.innerHTML = `
                     <p class="quote-text">"${quote.text}"</p>
                     <p class="quote-author">— ${quote.author}</p>
+                    ${categoriesHTML}
                     <button class="delete-button" data-index="${index}">Delete</button>
                 `;
 
