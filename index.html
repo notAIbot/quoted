@@ -7,12 +7,53 @@
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 40px 20px;
+            margin: 0;
+            padding: 0;
             background-color: #f5f5f5;
             color: #333;
             line-height: 1.6;
+        }
+
+        /* Header section */
+        .header {
+            background-color: white;
+            padding: 30px 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 0;
+        }
+
+        /* Main layout container */
+        .main-container {
+            display: flex;
+            gap: 30px;
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+
+        /* Sidebar on the left */
+        .sidebar {
+            flex: 0 0 350px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Main content area */
+        .main-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        /* Mobile responsive */
+        @media (max-width: 968px) {
+            .main-container {
+                flex-direction: column;
+            }
+
+            .sidebar {
+                flex: 1;
+            }
         }
 
         h1 {
@@ -31,16 +72,14 @@
         }
 
         .north-star {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            max-width: 800px;
+            margin: 20px auto 0;
+            text-align: center;
         }
 
-        .north-star h2 {
-            color: #3498db;
-            margin-top: 0;
+        .north-star p {
+            color: #7f8c8d;
+            font-size: 1.1em;
         }
 
         .status {
@@ -54,7 +93,7 @@
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             border-left: 4px solid #3498db;
         }
 
@@ -72,22 +111,6 @@
         }
 
         /* CSS for the Add Quote form section */
-
-        /* Main container for the form - gives it the white box style */
-        .add-quote-section {
-            background-color: white;
-            padding: 30px;                              /* Space inside the box */
-            border-radius: 8px;                         /* Rounded corners */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);     /* Subtle shadow for depth */
-            margin-bottom: 30px;                        /* Space below the box */
-        }
-
-        /* Heading inside the form section */
-        .add-quote-section h2 {
-            color: #3498db;                             /* Blue color */
-            margin-top: 0;                              /* Remove space above */
-            margin-bottom: 20px;                        /* Space below heading */
-        }
 
         /* Each input field group (label + input) */
         .form-group {
@@ -138,37 +161,21 @@
             background-color: #2980b9;                  /* Darker blue */
         }
 
-        /* Delete button styling */
-        .delete-button {
-            background-color: #e74c3c;                  /* Red background */
-            color: white;                               /* White text */
-            padding: 8px 16px;                          /* Space inside button */
-            border: none;                               /* Remove default border */
-            border-radius: 4px;                         /* Rounded corners */
-            font-size: 0.9em;                           /* Slightly smaller text */
-            cursor: pointer;                            /* Show hand cursor on hover */
-            margin-top: 10px;                           /* Space above button */
-        }
-
-        /* When user hovers over delete button - make it darker red */
-        .delete-button:hover {
-            background-color: #c0392b;                  /* Darker red */
-        }
-
         /* Random quote section styling */
         .random-quote-section {
             background-color: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
+            margin-bottom: 20px;
             text-align: center;
         }
 
         .random-quote-section h2 {
             color: #3498db;
             margin-top: 0;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
         }
 
         /* Random quote button styling */
@@ -205,19 +212,23 @@
             background-color: #229954;                  /* Darker green */
         }
 
-        /* Search section styling */
-        .search-section {
+        /* Sidebar sections styling */
+        .search-section,
+        .category-section,
+        .add-quote-section {
             background-color: white;
-            padding: 30px;
+            padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
         }
 
-        .search-section h2 {
+        .search-section h2,
+        .category-section h2,
+        .add-quote-section h2 {
             color: #3498db;
             margin-top: 0;
             margin-bottom: 15px;
+            font-size: 1.3em;
         }
 
         /* Search input box styling */
@@ -244,20 +255,7 @@
             font-size: 0.9em;
         }
 
-        /* Category filter section styling */
-        .category-section {
-            background-color: white;
-            padding: 30px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            margin-bottom: 30px;
-        }
-
-        .category-section h2 {
-            color: #3498db;
-            margin-top: 0;
-            margin-bottom: 15px;
-        }
+        /* Category filter specific styling */
 
         .category-group {
             margin-bottom: 20px;
@@ -335,15 +333,20 @@
     </style>
 </head>
 <body>
-    <h1>Hello, World!</h1>
-    <p class="tagline">Welcome to our Quote Collection</p>
-
-    <div class="north-star">
-        <h2>Our Mission</h2>
-        <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Hello, World!</h1>
+        <p class="tagline">Welcome to our Quote Collection</p>
+        <div class="north-star">
+            <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
+        </div>
     </div>
 
-    <!-- Search Section -->
+    <!-- Main Container with Sidebar and Content -->
+    <div class="main-container">
+        <!-- Left Sidebar -->
+        <div class="sidebar">
+            <!-- Search Section -->
     <div class="search-section">
         <h2>Search Quotes</h2>
         <input type="text" id="searchInput" placeholder="Search by quote text or author name...">
@@ -437,16 +440,6 @@
         <button id="clearFiltersButton" class="clear-filters-button">Clear All Filters</button>
     </div>
 
-    <!-- Random Quote Section -->
-    <div class="random-quote-section">
-        <h2>Feeling Lucky?</h2>
-        <button id="randomButton" class="random-button">Show Random Quote</button>
-        <button id="anotherRandomButton" class="random-button" style="display: none;">Show Another Random Quote</button>
-        <button id="showAllButton" class="show-all-button">Show All Quotes</button>
-    </div>
-
-    <!-- Initial quotes will be loaded from data.js and displayed here by JavaScript -->
-
     <!-- Form Section: Where users can add new quotes -->
     <div class="add-quote-section">
         <h2>Add Your Own Quote</h2>
@@ -469,11 +462,25 @@
             <button type="submit" class="add-button">Add Quote</button>
         </form>
     </div>
+        </div>
+        <!-- End of Sidebar -->
 
-    <!-- Container where all newly added quotes will appear -->
-    <div id="quotesContainer"></div>
+        <!-- Main Content Area -->
+        <div class="main-content">
+            <!-- Random Quote Section -->
+            <div class="random-quote-section">
+                <h2>Feeling Lucky?</h2>
+                <button id="randomButton" class="random-button">Show Random Quote</button>
+                <button id="anotherRandomButton" class="random-button" style="display: none;">Show Another Random Quote</button>
+                <button id="showAllButton" class="show-all-button">Show All Quotes</button>
+            </div>
 
-    <p class="status">🚀 Your first webpage is live!</p>
+            <!-- Container where all quotes will appear -->
+            <div id="quotesContainer"></div>
+        </div>
+        <!-- End of Main Content -->
+    </div>
+    <!-- End of Main Container -->
 
     <!-- Load the quote data from external file -->
     <!-- This must come BEFORE our main script so initialQuotes is available -->
@@ -770,58 +777,11 @@
                     <p class="quote-text">"${quote.text}"</p>
                     <p class="quote-author">— ${quote.author}</p>
                     ${categoriesHTML}
-                    <button class="delete-button" data-index="${index}">Delete</button>
                 `;
 
                 // Add this quote div to the page
                 // appendChild adds it as a child of quotesContainer
                 quotesContainer.appendChild(quoteDiv);
-            });
-
-            // After creating all quotes, add click handlers to all delete buttons
-            // querySelectorAll finds all elements that match the selector
-            const deleteButtons = document.querySelectorAll('.delete-button');
-            deleteButtons.forEach(function(button) {
-                button.addEventListener('click', function() {
-                    // Get the index from the button's data attribute
-                    // This tells us which quote to delete
-                    const indexToDelete = parseInt(button.getAttribute('data-index'));
-
-                    // Step 1: Ask for password
-                    // prompt() shows a popup where user can type input
-                    const userPassword = prompt('Enter password to delete this quote:');
-
-                    // Step 2: Check if password is correct
-                    // The secret password is stored here (visible in source code)
-                    const secretPassword = 'udadoise';
-
-                    if (userPassword !== secretPassword) {
-                        // Password is wrong - show error and stop
-                        alert('Incorrect password. Quote not deleted.');
-                        return;
-                    }
-
-                    // Step 3: Password is correct - now ask for confirmation
-                    // confirm() shows a popup with OK and Cancel buttons
-                    const confirmed = confirm('Are you sure you want to delete this quote?');
-
-                    if (!confirmed) {
-                        // User clicked Cancel - stop here
-                        return;
-                    }
-
-                    // Both password correct AND user confirmed - proceed with deletion
-                    // Remove the quote from the array
-                    // splice removes items from an array
-                    // splice(index, 1) means "remove 1 item at this index"
-                    quotes.splice(indexToDelete, 1);
-
-                    // Save the updated quotes to localStorage
-                    saveQuotes();
-
-                    // Re-display all quotes (now one less)
-                    displayQuotes();
-                });
             });
         }
 
