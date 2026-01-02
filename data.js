@@ -4287,5 +4287,69 @@ const initialQuotes = [
         "categories": [
             "Tech"
         ]
+    },
+    {
+        "text": "The only difference between our stores and our competitors is the way we treat our customers.",
+        "author": "Bruce Nordstrom",
+        "categories": [
+            "Leadership",
+            "Success",
+            "Innovation"
+        ]
+    },
+    {
+        "text": "Customer service is not a department, it's everyone's job.",
+        "author": "Bruce Nordstrom",
+        "categories": [
+            "Leadership",
+            "Hard Work",
+            "Wisdom"
+        ]
+    },
+    {
+        "text": "We're not in the shoe business, we're in the people business.",
+        "author": "Bruce Nordstrom",
+        "categories": [
+            "Leadership",
+            "Wisdom",
+            "Success"
+        ]
+    },
+    {
+        "text": "Set your goals high and work hard to achieve them.",
+        "author": "John W. Nordstrom",
+        "categories": [
+            "Motivation",
+            "Success",
+            "Dreams",
+            "Hard Work"
+        ]
+    },
+    {
+        "text": "Our job is to make sure we're providing value and convenience to customers in the way they want to shop.",
+        "author": "Erik Nordstrom",
+        "categories": [
+            "Leadership",
+            "Success",
+            "Wisdom"
+        ]
+    },
+    {
+        "text": "We believe in investing in our people and empowering them to serve customers.",
+        "author": "Erik Nordstrom",
+        "categories": [
+            "Leadership",
+            "Motivation",
+            "Hard Work"
+        ]
+    },
+    {
+        "text": "We need to be nimble and adapt to how customers want to shop.",
+        "author": "Erik Nordstrom",
+        "categories": [
+            "Leadership",
+            "Innovation",
+            "Wisdom"
+        ]
     }
 ];
