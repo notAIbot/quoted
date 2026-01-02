@@ -204,6 +204,45 @@
         .show-all-button:hover {
             background-color: #229954;                  /* Darker green */
         }
+
+        /* Search section styling */
+        .search-section {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .search-section h2 {
+            color: #3498db;
+            margin-top: 0;
+            margin-bottom: 15px;
+        }
+
+        /* Search input box styling */
+        #searchInput {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: inherit;
+            box-sizing: border-box;
+        }
+
+        /* When user clicks into the search box - highlight with blue border */
+        #searchInput:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        /* Search result count styling */
+        .search-results-info {
+            margin-top: 10px;
+            color: #7f8c8d;
+            font-size: 0.9em;
+        }
     </style>
 </head>
 <body>
@@ -213,6 +252,13 @@
     <div class="north-star">
         <h2>Our Mission</h2>
         <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
+    </div>
+
+    <!-- Search Section -->
+    <div class="search-section">
+        <h2>Search Quotes</h2>
+        <input type="text" id="searchInput" placeholder="Search by quote text or author name...">
+        <div id="searchResultsInfo" class="search-results-info"></div>
     </div>
 
     <!-- Random Quote Section -->
@@ -301,9 +347,56 @@
         const randomButton = document.getElementById('randomButton');
         const anotherRandomButton = document.getElementById('anotherRandomButton');
         const showAllButton = document.getElementById('showAllButton');
+        const searchInput = document.getElementById('searchInput');
+        const searchResultsInfo = document.getElementById('searchResultsInfo');
 
         // Variable to track if we're showing one random quote or all quotes
         let showingRandomQuote = false;
+
+        // Variable to track the current search term
+        let currentSearchTerm = '';
+
+        // Function to filter quotes based on search term
+        // Returns an array of quotes that match the search
+        function getFilteredQuotes() {
+            // If there's no search term, return all quotes
+            if (!currentSearchTerm) {
+                return quotes;
+            }
+
+            // Convert search term to lowercase for case-insensitive search
+            const searchLower = currentSearchTerm.toLowerCase();
+
+            // Use filter() to create a new array with only matching quotes
+            // filter() keeps items where the function returns true
+            return quotes.filter(function(quote) {
+                // Convert quote text and author to lowercase
+                const textLower = quote.text.toLowerCase();
+                const authorLower = quote.author.toLowerCase();
+
+                // Check if search term is found in either text or author
+                // includes() returns true if the string contains the search term
+                return textLower.includes(searchLower) || authorLower.includes(searchLower);
+            });
+        }
+
+        // Listen for when user types in the search box
+        // 'input' event fires every time the text changes
+        searchInput.addEventListener('input', function(e) {
+            // Update the current search term with what the user typed
+            currentSearchTerm = e.target.value;
+
+            // If we're in random quote mode, exit it when user searches
+            if (showingRandomQuote) {
+                showingRandomQuote = false;
+                randomButton.style.display = 'inline-block';
+                anotherRandomButton.style.display = 'none';
+                showAllButton.style.display = 'none';
+            }
+
+            // Display the filtered quotes
+            displayQuotes();
+        });
 
         // Listen for when the form is submitted (when user clicks "Add Quote")
         // addEventListener watches for events (like submit, click, etc.)
@@ -326,6 +419,10 @@
 
             // Save the updated quotes array to localStorage
             saveQuotes();
+
+            // Clear the search so user can see their new quote
+            currentSearchTerm = '';
+            searchInput.value = '';
 
             // Call the function to display all quotes on the page
             displayQuotes();
@@ -370,10 +467,30 @@
             // Clear everything in the container (start fresh)
             quotesContainer.innerHTML = '';
 
-            // Loop through each quote in the quotes array
+            // Get the filtered quotes based on current search term
+            const filteredQuotes = getFilteredQuotes();
+
+            // Update search results info
+            if (currentSearchTerm) {
+                // Show how many results match the search
+                searchResultsInfo.textContent = `Found ${filteredQuotes.length} quote${filteredQuotes.length !== 1 ? 's' : ''} matching "${currentSearchTerm}"`;
+            } else {
+                // Clear the info when not searching
+                searchResultsInfo.textContent = '';
+            }
+
+            // If no quotes match, show a message
+            if (filteredQuotes.length === 0) {
+                quotesContainer.innerHTML = '<p style="text-align: center; color: #7f8c8d;">No quotes found. Try a different search term.</p>';
+                return;
+            }
+
+            // Loop through each filtered quote
             // forEach runs the function once for each item
-            // The second parameter (index) tells us the position of this quote in the array
-            quotes.forEach(function(quote, index) {
+            // We need to find the original index in the full quotes array for deletion
+            filteredQuotes.forEach(function(quote) {
+                // Find the index of this quote in the original quotes array
+                const index = quotes.indexOf(quote);
                 // Create a new div element for this quote
                 const quoteDiv = document.createElement('div');
 
