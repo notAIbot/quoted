@@ -714,9 +714,30 @@
                 searchResultsInfo.textContent = '';
             }
 
-            // If no quotes match, show a message
+            // If no quotes match, show a message with option to add quote
             if (filteredQuotes.length === 0) {
-                quotesContainer.innerHTML = '<p style="text-align: center; color: #7f8c8d;">No quotes found. Try a different search term.</p>';
+                quotesContainer.innerHTML = `
+                    <div style="text-align: center; padding: 40px;">
+                        <p style="color: #7f8c8d; font-size: 1.2em; margin-bottom: 20px;">No quotes found matching your filters.</p>
+                        <p style="color: #95a5a6; margin-bottom: 20px;">Be the first to add one!</p>
+                        <button id="scrollToAddQuote" class="add-button">Add a Quote</button>
+                    </div>
+                `;
+
+                // Add click handler to scroll to add quote form
+                const scrollButton = document.getElementById('scrollToAddQuote');
+                if (scrollButton) {
+                    scrollButton.addEventListener('click', function() {
+                        // Scroll to the add quote form
+                        const addQuoteSection = document.querySelector('.add-quote-section');
+                        addQuoteSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+                        // Focus on the quote text input
+                        setTimeout(function() {
+                            document.getElementById('quoteText').focus();
+                        }, 500);
+                    });
+                }
                 return;
             }
 
