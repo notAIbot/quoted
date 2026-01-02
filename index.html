@@ -22,6 +22,30 @@
             margin-bottom: 0;
         }
 
+        /* Sticky header for mobile */
+        @media (max-width: 968px) {
+            .header {
+                position: sticky;
+                top: 0;
+                z-index: 1000;
+                padding: 20px 15px;
+            }
+
+            .header h1 {
+                font-size: 1.8em;
+                margin-bottom: 5px;
+            }
+
+            .header .tagline {
+                font-size: 1em;
+                margin-bottom: 15px;
+            }
+
+            .header .north-star {
+                display: none;
+            }
+        }
+
         /* Main layout container */
         .main-container {
             display: flex;
@@ -338,6 +362,19 @@
             border-radius: 12px;
             font-size: 0.8em;
         }
+
+        /* Wikipedia link styling */
+        .wiki-link {
+            color: #3498db;
+            text-decoration: underline;
+            transition: color 0.2s;
+            cursor: pointer;
+        }
+
+        .wiki-link:hover {
+            color: #2980b9;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -555,6 +592,34 @@
 
         // Set to track selected categories (using Set for easy add/remove)
         let selectedCategories = new Set();
+
+        // Helper function to create Wikipedia link from author name
+        function createWikipediaLink(author) {
+            let searchTerm;
+            let tooltipName;
+
+            // Check if author has parentheses (indicating movie character)
+            const movieMatch = author.match(/\(([^)]+)\)/);
+
+            if (movieMatch) {
+                // It's a movie character - use the movie name for the search
+                searchTerm = movieMatch[1].trim();
+                tooltipName = movieMatch[1].trim();
+            } else {
+                // Regular person - use their name
+                searchTerm = author.trim();
+                tooltipName = author.trim();
+            }
+
+            // URL encode the search term to handle special characters
+            const encodedSearch = encodeURIComponent(searchTerm);
+
+            // Create Wikipedia search URL (redirects to page if exact match exists)
+            const wikiUrl = `https://en.wikipedia.org/w/index.php?search=${encodedSearch}`;
+
+            // Return HTML with link
+            return `<a href="${wikiUrl}" target="_blank" rel="noopener noreferrer" class="wiki-link" title="Search ${tooltipName} on Wikipedia">${author}</a>`;
+        }
 
         // Function to filter quotes based on search term and categories
         // Returns an array of quotes that match the filters
@@ -783,7 +848,7 @@
 
                 quoteDiv.innerHTML = `
                     <p class="quote-text">"${quote.text}"</p>
-                    <p class="quote-author">— ${quote.author}</p>
+                    <p class="quote-author">— ${createWikipediaLink(quote.author)}</p>
                     ${categoriesHTML}
                 `;
 
@@ -817,7 +882,7 @@
             // Set the HTML content - no delete button in random mode
             quoteDiv.innerHTML = `
                 <p class="quote-text">"${quote.text}"</p>
-                <p class="quote-author">— ${quote.author}</p>
+                <p class="quote-author">— ${createWikipediaLink(quote.author)}</p>
             `;
 
             // Add this quote div to the page
