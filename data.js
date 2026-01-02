@@ -120,7 +120,8 @@ const initialQuotes = [
         "text": "All of us do not have equal talent. But, all of us have an equal opportunity to develop our talents.",
         "author": "A. P. J. Abdul Kalam",
         "categories": [
-            "Bollywood"
+            "Leadership",
+            "Courage"
         ]
     },
     {
@@ -505,7 +506,6 @@ const initialQuotes = [
         "text": "Difficulties in your life do not come to destroy you, but to help you realise your hidden potential and power, let difficulties know that you too are difficult.",
         "author": "A. P. J. Abdul Kalam",
         "categories": [
-            "Bollywood",
             "Motivation",
             "Wisdom"
         ]
@@ -663,7 +663,6 @@ const initialQuotes = [
         "text": "Don't take rest after your first victory because if you fail in second, more lips are waiting to say that your first victory was just luck.",
         "author": "A. P. J. Abdul Kalam",
         "categories": [
-            "Bollywood",
             "Success",
             "Failure"
         ]
@@ -733,7 +732,6 @@ const initialQuotes = [
         "text": "Dream, dream, dream. Dreams transform into thoughts and thoughts result in action.",
         "author": "A. P. J. Abdul Kalam",
         "categories": [
-            "Bollywood",
             "Dreams"
         ]
     },
@@ -901,7 +899,10 @@ const initialQuotes = [
         "text": "Excellence is a continuous process and not an accident.",
         "author": "A. P. J. Abdul Kalam",
         "categories": [
-            "Bollywood"
+            "Motivation",
+            "Leadership",
+            "Courage",
+            "Dreams"
         ]
     },
     {
