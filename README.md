@@ -1,6 +1,6 @@
 # Quote Collection
 
-A community-focused quote collection to save and revisit quotes that inspire and resonate with everyone.
+A community-focused quote collection to save and revisit quotes that inspire and resonate with everyone. -notAIbot
 
 ## About This Project
 
