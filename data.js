@@ -301,13 +301,6 @@ const initialQuotes = [
         ]
     },
     {
-        "text": "Certain things catch your eye, but pursue only those that capture the heart.",
-        "author": "Ancient Indian Proverb",
-        "categories": [
-            "Wisdom"
-        ]
-    },
-    {
         "text": "Challenges are what make life interesting and overcoming them is what makes life meaningful.",
         "author": "Joshua Marine",
         "categories": [
