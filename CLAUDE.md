@@ -65,14 +65,19 @@ I'm building a quote collection for community so that we can save and revisit qu
 - ✅ Mobile responsive design
 
 ## Next 3 Steps
-1. Consider additional features (favorites, export, share)
-2. Get feedback from community on what features to add next
-3. Explore API integration for quote of the day
+1. **Implement Dark Mode Toggle** - Allow users to switch between light and dark themes
+   - Add toggle button in header/sidebar
+   - Use CSS variables for easy theme switching
+   - Save user preference to localStorage
+   - Learn: CSS variables, theme management, user preferences
+2. Consider additional features (favorites, export, share)
+3. Get feedback from community on what features to add next
 
 ## Decisions Made
 - Starting with a simple static site (no database) - easy to deploy and maintain
 - Using vanilla JavaScript (no frameworks) - keeps it simple for learning
 - Focusing on display first, will add features like search/categories later
+- **Jan 5, 2025:** Prioritizing dark mode toggle as next feature - highly requested, great learning opportunity for CSS variables and theme management
 
 ## Commit Message Style
 - Always use 🐵 (Monkey emoji) instead of 🤖 (robot emoji)
@@ -254,10 +259,10 @@ I'm building a quote collection for community so that we can save and revisit qu
 - ✅ Categories/tags with filtering
 
 ## Future Ideas
+- **Dark mode toggle** - 🚧 NEXT UP! Prioritized for next session
 - Favorite quotes feature (save favorites separately)
 - Export quotes to PDF or text file
 - Share quotes on social media
 - Quote of the day API integration
-- Dark mode toggle
 - More quote sources (philosophers, poets, etc.)
-- New skills to add quotes via cli. 
+- New skills to add quotes via cli 
