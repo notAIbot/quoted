@@ -50,7 +50,7 @@ This is a simple web-based quote collection built as a learning project followin
 ## How to View
 
 - **Local:** Open `index.html` in your browser
-- **Live:** https://notaibot.github.io/launchpad/
+- **Live:** https://notaibot.github.io/quoted/
 
 ## Project Goals
 

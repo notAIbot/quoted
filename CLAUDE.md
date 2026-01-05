@@ -14,7 +14,7 @@ I'm building a quote collection for community so that we can save and revisit qu
 
 ## How to Run
 - Local: Open index.html in browser
-- Live: https://notaibot.github.io/launchpad/
+- Live: https://notaibot.github.io/quoted/
 
 ## Current Status - WHERE WE STOPPED (Jan 5, 2025 - Session 7)
 **Completed:**
