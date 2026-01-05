@@ -103,13 +103,6 @@ const initialQuotes = [
         ]
     },
     {
-        "text": "After all this time? Always.",
-        "author": "Severus Snape (Harry Potter)",
-        "categories": [
-            "Movies"
-        ]
-    },
-    {
         "text": "All limitations are self-imposed.",
         "author": "Oliver Wendell Holmes",
         "categories": [
