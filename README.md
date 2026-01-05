@@ -42,6 +42,7 @@ This is a simple web-based quote collection built as a learning project followin
   - 🐦 **Twitter** - Share random quotes with hashtags directly to Twitter
   - 📘 **Facebook** - Share your quote collection on Facebook
   - 💼 **LinkedIn** - Professional sharing on LinkedIn
+  - 📸 **Instagram** - Web Share API on mobile, clipboard copy with instructions on desktop
 - **Real-time Search** - Search by quote text or author name
 - **Category Filtering** - Filter by Source (Tech, Cricket, Movies, etc.) and Theme (Motivation, Success, Leadership, etc.)
 - **Interactive Category Tags** - Click tags directly on quotes to toggle filters on/off

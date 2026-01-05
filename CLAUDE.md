@@ -66,6 +66,7 @@ I'm building a quote collection for community so that we can save and revisit qu
   - Share on Twitter (random quote with hashtags)
   - Share on Facebook (share site link)
   - Share on LinkedIn (share site link)
+  - Share on Instagram (Web Share API on mobile, clipboard copy on desktop)
 - ✅ Quote of the Day - deterministic quote that changes daily
 - ✅ Side-by-side layout for Feeling Lucky and Favorites sections
 - ✅ Sticky sidebar for easy access to filters
@@ -134,11 +135,15 @@ I'm building a quote collection for community so that we can save and revisit qu
     - Twitter: Share random quotes with hashtags using Twitter Web Intent API
     - Facebook: Share site URL using Facebook Sharer API
     - LinkedIn: Share site URL using LinkedIn sharing API
+    - Instagram: Web Share API for mobile, clipboard copy fallback for desktop
     - All open in popup windows with `window.open()` and specific dimensions
+    - Learned about Web Share API (`navigator.share()`) for native mobile sharing
+    - Implemented clipboard copy with `document.execCommand('copy')` as fallback
+    - Provided user-friendly instructions for different platforms
   - **UI/UX improvements:**
     - Renamed section to "Export & Share" for clarity
     - Added emojis to all buttons for visual appeal
-    - Applied brand colors to social media buttons (Twitter blue #1DA1F2, Facebook #4267B2, LinkedIn #0077B5)
+    - Applied brand colors to social media buttons (Twitter blue #1DA1F2, Facebook #4267B2, LinkedIn #0077B5, Instagram pink #E4405F)
     - Created subheading for social media section organization
     - Added hover effects with `!important` to override defaults
 - Learned about working with external JavaScript libraries via CDN

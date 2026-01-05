@@ -531,6 +531,10 @@
             background-color: #006097 !important;
         }
 
+        #shareInstagramButton:hover {
+            background-color: #d62976 !important;
+        }
+
         /* Search input box styling */
         #searchInput {
             width: 100%;
@@ -1082,6 +1086,7 @@
         <button id="shareTwitterButton" class="export-button" style="background-color: #1DA1F2;">🐦 Share on Twitter</button>
         <button id="shareFacebookButton" class="export-button" style="background-color: #4267B2;">📘 Share on Facebook</button>
         <button id="shareLinkedInButton" class="export-button" style="background-color: #0077B5;">💼 Share on LinkedIn</button>
+        <button id="shareInstagramButton" class="export-button" style="background-color: #E4405F;">📸 Share on Instagram</button>
     </div>
 
     <!-- Form Section: Where users can add new quotes -->
@@ -1362,6 +1367,7 @@
         const shareTwitterButton = document.getElementById('shareTwitterButton');
         const shareFacebookButton = document.getElementById('shareFacebookButton');
         const shareLinkedInButton = document.getElementById('shareLinkedInButton');
+        const shareInstagramButton = document.getElementById('shareInstagramButton');
 
         // Mobile filter button elements
         const mobileFilterBtn = document.getElementById('mobileFilterBtn');
@@ -1846,6 +1852,51 @@
 
             // Open LinkedIn in new window
             window.open(linkedInUrl, '_blank', 'width=550,height=420');
+        });
+
+        // Share on Instagram button
+        shareInstagramButton.addEventListener('click', function() {
+            // Get a random quote from currently displayed quotes
+            const quotesToShare = getFilteredQuotes();
+
+            if (quotesToShare.length === 0) {
+                alert('No quotes to share! Please adjust your filters or add some quotes.');
+                return;
+            }
+
+            const randomQuote = quotesToShare[Math.floor(Math.random() * quotesToShare.length)];
+            const shareText = `"${randomQuote.text}" — ${randomQuote.author}\n\nFrom Quote Collection: https://notaibot.github.io/quoted/`;
+
+            // Try to use Web Share API (works great on mobile, especially for Instagram)
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Inspiring Quote',
+                    text: shareText,
+                    url: 'https://notaibot.github.io/quoted/'
+                }).then(function() {
+                    console.log('Shared successfully');
+                }).catch(function(error) {
+                    console.log('Error sharing:', error);
+                });
+            } else {
+                // Fallback for desktop: Copy to clipboard and show instructions
+                // Create a temporary textarea to copy text
+                const textarea = document.createElement('textarea');
+                textarea.value = shareText;
+                textarea.style.position = 'fixed';
+                textarea.style.opacity = '0';
+                document.body.appendChild(textarea);
+                textarea.select();
+
+                try {
+                    document.execCommand('copy');
+                    alert('Quote copied to clipboard!\n\nTo share on Instagram:\n1. Open Instagram on your phone\n2. Create a new post or story\n3. Paste the quote\n4. Share with your followers!');
+                } catch (err) {
+                    alert('Instagram sharing works best on mobile devices.\n\nTo share this quote:\n1. Screenshot this quote\n2. Open Instagram on your phone\n3. Create a new post or story\n4. Upload the screenshot or type:\n\n' + shareText);
+                }
+
+                document.body.removeChild(textarea);
+            }
         });
 
         // When the page first loads, display quote of the day and all quotes
