@@ -1162,14 +1162,70 @@
             const quoteDiv = document.createElement('div');
             quoteDiv.className = 'quote-container';
 
+            // Build category tags HTML if quote has categories
+            let categoriesHTML = '';
+            if (quote.categories && Array.isArray(quote.categories) && quote.categories.length > 0) {
+                categoriesHTML = '<div class="quote-categories">' +
+                    quote.categories.map(function(cat) {
+                        // Check if this category is currently selected
+                        const isSelected = selectedCategories.has(cat);
+                        const tooltip = isSelected ? 'Click to unfilter' : 'Click to show all quotes with this tag';
+                        const style = isSelected ? ' style="background-color: #ff9933;"' : '';
+                        return '<span class="category-tag" title="' + tooltip + '"' + style + '>' + cat + '</span>';
+                    }).join('') +
+                    '</div>';
+            }
+
             // Set the HTML content - no delete button in random mode
             quoteDiv.innerHTML = `
                 <p class="quote-text">"${quote.text}"</p>
                 <p class="quote-author">— ${createWikipediaLink(quote.author)}</p>
+                ${categoriesHTML}
             `;
 
             // Add this quote div to the page
             quotesContainer.appendChild(quoteDiv);
+
+            // Add click event listeners to category tags
+            if (quote.categories && Array.isArray(quote.categories) && quote.categories.length > 0) {
+                const categoryTags = quoteDiv.querySelectorAll('.category-tag');
+                categoryTags.forEach(function(tag) {
+                    tag.addEventListener('click', function() {
+                        const categoryName = this.textContent;
+
+                        // Find the corresponding checkbox
+                        const checkbox = Array.from(categoryCheckboxes).find(function(cb) {
+                            return cb.value === categoryName;
+                        });
+
+                        if (checkbox) {
+                            // Toggle the checkbox
+                            checkbox.checked = !checkbox.checked;
+
+                            // Add or remove from selected categories
+                            if (checkbox.checked) {
+                                selectedCategories.add(categoryName);
+                            } else {
+                                selectedCategories.delete(categoryName);
+                            }
+
+                            // If we're in random quote mode, exit it
+                            if (showingRandomQuote) {
+                                showingRandomQuote = false;
+                                randomButton.style.display = 'inline-block';
+                                anotherRandomButton.style.display = 'none';
+                                showAllButton.style.display = 'none';
+                            }
+
+                            // Update the display
+                            displayQuotes();
+
+                            // Scroll to top of quotes to see filtered results
+                            quotesContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    });
+                });
+            }
         }
     </script>
 </body>
