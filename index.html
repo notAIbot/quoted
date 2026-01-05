@@ -514,31 +514,45 @@
             text-decoration: underline;
         }
 
-        /* Back to Top button */
+        /* Back to Top button - Fixed in bottom-right corner */
         .back-to-top {
-            width: 100%;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
             background-color: #3498db;
             color: white;
             border: none;
-            padding: 8px 16px;
+            padding: 10px 20px;
             border-radius: 4px;
-            font-size: 0.85em;
+            font-size: 0.9em;
             font-weight: normal;
             cursor: pointer;
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
-            margin-top: 15px;
+            transition: opacity 0.3s, visibility 0.3s, background-color 0.2s, transform 0.2s;
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
         }
 
         .back-to-top.visible {
-            opacity: 0.8;
+            opacity: 0.9;
             visibility: visible;
         }
 
         .back-to-top:hover {
             opacity: 1;
             background-color: #2980b9;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile adjustment for back to top button */
+        @media (max-width: 968px) {
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                padding: 8px 16px;
+                font-size: 0.85em;
+            }
         }
     </style>
 </head>
@@ -684,8 +698,6 @@
         </form>
     </div>
 
-    <!-- Back to Top button -->
-    <button id="backToTopBtn" class="back-to-top">↑ Back to Top</button>
         </div>
         <!-- End of Sidebar -->
 
@@ -705,6 +717,9 @@
         <!-- End of Main Content -->
     </div>
     <!-- End of Main Container -->
+
+    <!-- Back to Top button - Fixed position, floats in bottom-right corner -->
+    <button id="backToTopBtn" class="back-to-top">↑ Back to Top</button>
 
     <!-- Load the quote data from external file -->
     <!-- This must come BEFORE our main script so initialQuotes is available -->
