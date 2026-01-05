@@ -471,6 +471,33 @@
             color: #2980b9;
             text-decoration: underline;
         }
+
+        /* Back to Top button */
+        .back-to-top {
+            width: 100%;
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.85em;
+            font-weight: normal;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, background-color 0.2s;
+            margin-top: 15px;
+        }
+
+        .back-to-top.visible {
+            opacity: 0.8;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            opacity: 1;
+            background-color: #2980b9;
+        }
     </style>
 </head>
 <body>
@@ -609,6 +636,9 @@
             <button type="submit" class="add-button">Add Quote</button>
         </form>
     </div>
+
+    <!-- Back to Top button -->
+    <button id="backToTopBtn" class="back-to-top">↑ Back to Top</button>
         </div>
         <!-- End of Sidebar -->
 
@@ -915,6 +945,28 @@
         // When the page first loads, display random header quote and all quotes
         displayHeaderQuote();
         displayQuotes();
+
+        // Back to Top button functionality
+        const backToTopBtn = document.getElementById('backToTopBtn');
+
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                // Show button when scrolled down more than 300px
+                backToTopBtn.classList.add('visible');
+            } else {
+                // Hide button when near the top
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+
+        // Scroll to top when button is clicked
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
 
         // Function to display all quotes on the page
         function displayQuotes() {
