@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
+  <!-- Speech bubble background -->
+  <circle cx="60" cy="55" r="45" fill="#f5f5dc" stroke="#d3d3d3" stroke-width="2"/>
+
+  <!-- Speech bubble tail -->
+  <path d="M 25 85 Q 20 95 15 105 L 30 90 Z" fill="#f5f5dc" stroke="#d3d3d3" stroke-width="2"/>
+
+  <!-- Opening quotation marks (top left) -->
+  <path d="M 30 25 Q 30 20 33 20 Q 36 20 36 23 L 34 30 Q 30 29 30 25 Z" fill="#333"/>
+  <path d="M 40 25 Q 40 20 43 20 Q 46 20 46 23 L 44 30 Q 40 29 40 25 Z" fill="#333"/>
+
+  <!-- Three dots in the middle -->
+  <circle cx="45" cy="55" r="4" fill="#333"/>
+  <circle cx="60" cy="55" r="4" fill="#333"/>
+  <circle cx="75" cy="55" r="4" fill="#333"/>
+
+  <!-- Closing quotation marks (bottom right) -->
+  <path d="M 74 80 Q 74 85 77 85 Q 80 85 80 82 L 78 75 Q 74 76 74 80 Z" fill="#333"/>
+  <path d="M 84 80 Q 84 85 87 85 Q 90 85 90 82 L 88 75 Q 84 76 84 80 Z" fill="#333"/>
+</svg>
