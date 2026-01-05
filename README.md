@@ -24,10 +24,10 @@ This is a simple web-based quote collection built as a learning project followin
 - [x] Dynamic tooltips and visual feedback for active filters ✅
 - [x] Dark mode toggle with sliding switch ✅
 - [x] Favorites feature - Save and view favorite quotes ✅
-- [x] Export functionality - Download quotes as text files ✅
+- [x] Export functionality - Text, PDF, Email, Social Media ✅
 - [x] Quote of the Day - Daily inspirational quote ✅
 - [x] Side-by-side layout for interactive sections ✅
-- [ ] Additional features (share on social media, etc.)
+- [ ] Additional features (CLI skill, external API integration, etc.)
 
 ## Features
 
@@ -35,7 +35,13 @@ This is a simple web-based quote collection built as a learning project followin
 - **Quote of the Day** - Beautiful gradient section with a deterministic daily quote that changes each day
 - **Dark Mode Toggle** - Beautiful sliding switch to toggle between light and dark themes (preference saved automatically)
 - **Favorites System** - Save your favorite quotes with a heart button and view them anytime
-- **Export Functionality** - Download quotes as text files (Current View, Favorites Only, or All Quotes)
+- **Export & Share Functionality**:
+  - 💾 **Text Export** - Download quotes as .txt files (Current View, Favorites, or All Quotes)
+  - 📕 **PDF Export** - Professional PDF generation with jsPDF library, automatic pagination, page numbers, and formatted layout
+  - 📧 **Email Sharing** - Share up to 5 quotes via email with pre-filled subject and body
+  - 🐦 **Twitter** - Share random quotes with hashtags directly to Twitter
+  - 📘 **Facebook** - Share your quote collection on Facebook
+  - 💼 **LinkedIn** - Professional sharing on LinkedIn
 - **Real-time Search** - Search by quote text or author name
 - **Category Filtering** - Filter by Source (Tech, Cricket, Movies, etc.) and Theme (Motivation, Success, Leadership, etc.)
 - **Interactive Category Tags** - Click tags directly on quotes to toggle filters on/off
@@ -52,6 +58,7 @@ This is a simple web-based quote collection built as a learning project followin
 ## Tech Stack
 
 - HTML/CSS/JavaScript (vanilla, no frameworks)
+- jsPDF library for professional PDF export
 - Hosted on GitHub Pages
 - Version control with Git/GitHub
 
