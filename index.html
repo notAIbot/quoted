@@ -427,7 +427,7 @@
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 4px var(--shadow);
-            margin-bottom: 20px;
+            margin-bottom: 0;
             text-align: center;
             transition: background-color 0.3s ease;
         }
@@ -665,13 +665,31 @@
             50% { transform: scale(1.3); }
         }
 
+        /* Container for side-by-side sections */
+        .side-by-side-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .side-by-side-container > * {
+            flex: 1;
+        }
+
+        /* Stack on mobile */
+        @media (max-width: 968px) {
+            .side-by-side-container {
+                flex-direction: column;
+            }
+        }
+
         /* Favorites section styling */
         .favorites-section {
             background-color: var(--bg-secondary);
             padding: 25px;
             border-radius: 8px;
             box-shadow: 0 2px 4px var(--shadow);
-            margin-bottom: 20px;
+            margin-bottom: 0;
             text-align: center;
             transition: background-color 0.3s ease;
         }
@@ -875,8 +893,8 @@
         <div class="header-quote-container">
             <img src="quotes.png" alt="Quote Collection Logo" class="header-logo">
             <div class="header-quote-text">
-                <h1 id="headerQuote" style="font-style: italic;">"Loading..."</h1>
-                <p id="headerAuthor" class="tagline">Welcome to our Quote Collection</p>
+                <h1>Quote Collection</h1>
+                <p class="tagline">Discover quotes that inspire and resonate</p>
             </div>
         </div>
         <div class="north-star">
@@ -1034,20 +1052,23 @@
                 </div>
             </div>
 
-            <!-- Random Quote Section -->
-            <div class="random-quote-section">
-                <h2>Feeling Lucky?</h2>
-                <button id="randomButton" class="random-button">Show Random Quote</button>
-                <button id="anotherRandomButton" class="random-button" style="display: none;">Show Another Random Quote</button>
-                <button id="showAllButton" class="show-all-button">Show All Quotes</button>
-            </div>
+            <!-- Side-by-side container for Random Quote and Favorites -->
+            <div class="side-by-side-container">
+                <!-- Random Quote Section -->
+                <div class="random-quote-section">
+                    <h2>Feeling Lucky?</h2>
+                    <button id="randomButton" class="random-button">Show Random Quote</button>
+                    <button id="anotherRandomButton" class="random-button" style="display: none;">Show Another Random Quote</button>
+                    <button id="showAllButton" class="show-all-button">Show All Quotes</button>
+                </div>
 
-            <!-- Favorites Section -->
-            <div class="favorites-section">
-                <h2>❤️ Your Favorites</h2>
-                <button id="showFavoritesButton" class="favorites-button">Show Favorites</button>
-                <button id="showAllFromFavoritesButton" class="show-all-button" style="display: none;">Show All Quotes</button>
-                <p id="favoritesCount" style="margin-top: 15px; color: var(--text-secondary); font-size: 0.9em;">0 favorites saved</p>
+                <!-- Favorites Section -->
+                <div class="favorites-section">
+                    <h2>❤️ Your Favorites</h2>
+                    <button id="showFavoritesButton" class="favorites-button">Show Favorites</button>
+                    <button id="showAllFromFavoritesButton" class="show-all-button" style="display: none;">Show All Quotes</button>
+                    <p id="favoritesCount" style="margin-top: 15px; color: var(--text-secondary); font-size: 0.9em;">0 favorites saved</p>
+                </div>
             </div>
 
             <!-- Container where all quotes will appear -->
@@ -1221,17 +1242,6 @@
             // No saved quotes yet OR old quotes without categories - use initial quotes and save them
             quotes = [...initialQuotes];
             saveQuotes();
-        }
-
-        // Display a random quote in the header
-        // Pick a random quote from the initialQuotes array (not user-added quotes)
-        function displayHeaderQuote() {
-            const randomIndex = Math.floor(Math.random() * initialQuotes.length);
-            const randomQuote = initialQuotes[randomIndex];
-
-            // Update the header with the random quote
-            document.getElementById('headerQuote').textContent = '"' + randomQuote.text + '"';
-            document.getElementById('headerAuthor').innerHTML = '— ' + createWikipediaLink(randomQuote.author);
         }
 
         // Display Quote of the Day - deterministic based on today's date
@@ -1557,8 +1567,7 @@
             exportQuotes(quotes, `quotes-all-${timestamp}.txt`);
         });
 
-        // When the page first loads, display random header quote, quote of the day, and all quotes
-        displayHeaderQuote();
+        // When the page first loads, display quote of the day and all quotes
         displayQuoteOfTheDay();
         displayQuotes();
         updateFavoritesCount();
