@@ -16,7 +16,7 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Local: Open index.html in browser
 - Live: https://notaibot.github.io/launchpad/
 
-## Current Status - WHERE WE STOPPED (Jan 2, 2025 - Session 5)
+## Current Status - WHERE WE STOPPED (Jan 4, 2025 - Session 6)
 **Completed:**
 - ✅ Step 1-3: Environment setup complete
 - ✅ Step 4: Project brainstormed - Quote Collection
@@ -36,6 +36,8 @@ I'm building a quote collection for community so that we can save and revisit qu
 - ✅ Step 18: Made sidebar sticky while scrolling
 - ✅ Step 19: Removed delete button for cleaner reading experience
 - ✅ Step 20: Expanded to 580+ quotes from diverse sources
+- ✅ Step 21: Made category tags clickable with toggle filtering
+- ✅ Step 22: Added dynamic tooltips and visual feedback for active filters
 - ✅ Created personal GitHub account (notAIbot)
 - ✅ Cleaned all personal information from repository
 - ✅ Site verified working on phone
@@ -45,6 +47,9 @@ I'm building a quote collection for community so that we can save and revisit qu
 - ✅ localStorage persistence
 - ✅ Real-time search by quote text or author
 - ✅ Category filtering (AND logic - must match all selected categories)
+- ✅ Interactive category tags - click tags to toggle filters
+- ✅ Dynamic tooltips on tags that change based on filter state
+- ✅ Visual feedback - active filters show in darker orange
 - ✅ Random quote display
 - ✅ Sticky sidebar for easy access to filters
 - ✅ 580+ curated quotes from:
@@ -77,6 +82,33 @@ I'm building a quote collection for community so that we can save and revisit qu
   ```
 
 ## What I Learned
+
+**Jan 4, 2025:**
+- Enhanced category tags with interactive functionality
+- Learned about CSS color customization:
+  - Changed tag colors from blue to light orange (#ffb366)
+  - Created hover effects with darker orange (#ff9933)
+  - Applied visual feedback for active states
+- Implemented clickable tags with toggle functionality:
+  - Tags now act as filter controls
+  - Click to enable filter, click again to disable
+  - Syncs with sidebar checkboxes
+- Added dynamic HTML attributes:
+  - `title` attribute for tooltips
+  - Inline `style` attribute for conditional styling
+  - Tooltips change based on filter state
+- Learned about state-based rendering:
+  - Checking if category is in `selectedCategories` Set
+  - Conditionally applying styles based on state
+  - Re-rendering UI when state changes
+- Improved user experience with:
+  - Visual feedback (darker color for active filters)
+  - Context-aware tooltips
+  - Smooth scrolling to filtered results
+  - Pointer cursor on interactive elements
+- Practiced CSS transitions for smooth hover effects
+- Used `Array.from()` and `.find()` to locate checkboxes by value
+- Practiced incremental feature development and testing
 
 **Jan 2, 2025:**
 - Expanded quote collection from 5 to 580+ quotes

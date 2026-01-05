@@ -20,6 +20,8 @@ This is a simple web-based quote collection built as a learning project followin
 - [x] Random quote button - Display random quotes on demand ✅
 - [x] Sticky sidebar - Easy access to filters while scrolling ✅
 - [x] 580+ curated quotes from diverse sources ✅
+- [x] Interactive category tags - Click to toggle filters ✅
+- [x] Dynamic tooltips and visual feedback for active filters ✅
 - [ ] Additional features (favorites, export, share, etc.)
 
 ## Features
@@ -27,6 +29,9 @@ This is a simple web-based quote collection built as a learning project followin
 - **580+ Inspirational Quotes** from tech leaders, sports icons, movie characters, world leaders, and more
 - **Real-time Search** - Search by quote text or author name
 - **Category Filtering** - Filter by Source (Tech, Cricket, Movies, etc.) and Theme (Motivation, Success, Leadership, etc.)
+- **Interactive Category Tags** - Click tags directly on quotes to toggle filters on/off
+- **Smart Tooltips** - Context-aware tooltips that change based on filter state
+- **Visual Feedback** - Active filters display in darker orange for easy identification
 - **Sticky Sidebar** - Filters stay accessible while scrolling through quotes
 - **Interactive "Add Quote" form** - Contribute your own quotes
 - **localStorage persistence** - Your added quotes are saved permanently in your browser
