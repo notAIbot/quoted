@@ -23,22 +23,30 @@ This is a simple web-based quote collection built as a learning project followin
 - [x] Interactive category tags - Click to toggle filters ✅
 - [x] Dynamic tooltips and visual feedback for active filters ✅
 - [x] Dark mode toggle with sliding switch ✅
-- [ ] Additional features (favorites, export, share, etc.)
+- [x] Favorites feature - Save and view favorite quotes ✅
+- [x] Export functionality - Download quotes as text files ✅
+- [x] Quote of the Day - Daily inspirational quote ✅
+- [x] Side-by-side layout for interactive sections ✅
+- [ ] Additional features (share on social media, etc.)
 
 ## Features
 
 - **580+ Inspirational Quotes** from tech leaders, sports icons, movie characters, world leaders, and more
+- **Quote of the Day** - Beautiful gradient section with a deterministic daily quote that changes each day
 - **Dark Mode Toggle** - Beautiful sliding switch to toggle between light and dark themes (preference saved automatically)
+- **Favorites System** - Save your favorite quotes with a heart button and view them anytime
+- **Export Functionality** - Download quotes as text files (Current View, Favorites Only, or All Quotes)
 - **Real-time Search** - Search by quote text or author name
 - **Category Filtering** - Filter by Source (Tech, Cricket, Movies, etc.) and Theme (Motivation, Success, Leadership, etc.)
 - **Interactive Category Tags** - Click tags directly on quotes to toggle filters on/off
 - **Smart Tooltips** - Context-aware tooltips that change based on filter state
 - **Visual Feedback** - Active filters display in darker orange for easy identification
+- **Side-by-Side Layout** - Feeling Lucky and Favorites sections displayed side by side (stacks on mobile)
 - **Sticky Sidebar** - Filters stay accessible while scrolling through quotes
 - **Interactive "Add Quote" form** - Contribute your own quotes
-- **localStorage persistence** - Your added quotes and theme preference are saved permanently in your browser
+- **localStorage persistence** - Your added quotes, favorites, and theme preference are saved permanently in your browser
 - **Random quote display** - View one random quote at a time with "Show Another Random Quote" option
-- **Mobile responsive design** - Works beautifully on all devices
+- **Mobile responsive design** - Works beautifully on all devices with adaptive layouts
 - Clean, modern interface with organized layout
 
 ## Tech Stack
