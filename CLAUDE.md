@@ -16,7 +16,7 @@ I'm building a quote collection for community so that we can save and revisit qu
 - Local: Open index.html in browser
 - Live: https://notaibot.github.io/launchpad/
 
-## Current Status - WHERE WE STOPPED (Jan 4, 2025 - Session 6)
+## Current Status - WHERE WE STOPPED (Jan 5, 2025 - Session 7)
 **Completed:**
 - ✅ Step 1-3: Environment setup complete
 - ✅ Step 4: Project brainstormed - Quote Collection
@@ -82,6 +82,23 @@ I'm building a quote collection for community so that we can save and revisit qu
   ```
 
 ## What I Learned
+
+**Jan 5, 2025:**
+- Cleaned up repository by removing unused files
+- Learned about verifying file references before deletion:
+  - Used `Grep` tool to search for file references across codebase
+  - Checked all HTML, CSS, and JavaScript files
+  - Confirmed no references exist before deleting
+- Practiced git workflow with file deletion:
+  - Used `rm` command to delete file
+  - Added deletion to staging with `git add`
+  - Committed with descriptive message
+  - Pushed changes to remote repository
+- Maintained clean codebase by removing unused assets:
+  - Identified logo.svg was not referenced anywhere
+  - File was using quotes.png and favicon.svg instead
+  - Removed logo.svg to keep repository clean
+- Learned importance of codebase hygiene and removing dead code
 
 **Jan 4, 2025:**
 - Enhanced category tags with interactive functionality
