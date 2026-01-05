@@ -23,6 +23,38 @@
             margin-bottom: 0;
         }
 
+        /* Header quote container with logo */
+        .header-quote-container {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 30px;
+            margin-bottom: 20px;
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .header-logo {
+            width: 100px;
+            height: 100px;
+            flex-shrink: 0;
+        }
+
+        .header-quote-text {
+            flex: 1;
+            max-width: 800px;
+        }
+
+        .header-quote-text h1 {
+            margin-bottom: 10px;
+            margin-top: 0;
+        }
+
+        .header-quote-text .tagline {
+            margin-bottom: 0;
+        }
+
         /* Sticky header for mobile */
         @media (max-width: 968px) {
             .header {
@@ -30,6 +62,15 @@
                 top: 0;
                 z-index: 1000;
                 padding: 20px 15px;
+            }
+
+            .header-quote-container {
+                gap: 20px;
+            }
+
+            .header-logo {
+                width: 80px;
+                height: 80px;
             }
 
             .header h1 {
@@ -504,8 +545,13 @@
 <body>
     <!-- Header Section -->
     <div class="header">
-        <h1 id="headerQuote" style="font-style: italic;">"Loading..."</h1>
-        <p id="headerAuthor" class="tagline">Welcome to our Quote Collection</p>
+        <div class="header-quote-container">
+            <img src="quotes.png" alt="Quote Collection Logo" class="header-logo">
+            <div class="header-quote-text">
+                <h1 id="headerQuote" style="font-style: italic;">"Loading..."</h1>
+                <p id="headerAuthor" class="tagline">Welcome to our Quote Collection</p>
+            </div>
+        </div>
         <div class="north-star">
             <p>I'm building a quote collection for community so that we can save and revisit quotes that inspire or resonate with everyone.</p>
             <p>-notAIbot</p>
