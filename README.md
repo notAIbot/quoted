@@ -22,11 +22,13 @@ This is a simple web-based quote collection built as a learning project followin
 - [x] 580+ curated quotes from diverse sources ✅
 - [x] Interactive category tags - Click to toggle filters ✅
 - [x] Dynamic tooltips and visual feedback for active filters ✅
+- [x] Dark mode toggle with sliding switch ✅
 - [ ] Additional features (favorites, export, share, etc.)
 
 ## Features
 
 - **580+ Inspirational Quotes** from tech leaders, sports icons, movie characters, world leaders, and more
+- **Dark Mode Toggle** - Beautiful sliding switch to toggle between light and dark themes (preference saved automatically)
 - **Real-time Search** - Search by quote text or author name
 - **Category Filtering** - Filter by Source (Tech, Cricket, Movies, etc.) and Theme (Motivation, Success, Leadership, etc.)
 - **Interactive Category Tags** - Click tags directly on quotes to toggle filters on/off
@@ -34,7 +36,7 @@ This is a simple web-based quote collection built as a learning project followin
 - **Visual Feedback** - Active filters display in darker orange for easy identification
 - **Sticky Sidebar** - Filters stay accessible while scrolling through quotes
 - **Interactive "Add Quote" form** - Contribute your own quotes
-- **localStorage persistence** - Your added quotes are saved permanently in your browser
+- **localStorage persistence** - Your added quotes and theme preference are saved permanently in your browser
 - **Random quote display** - View one random quote at a time with "Show Another Random Quote" option
 - **Mobile responsive design** - Works beautifully on all devices
 - Clean, modern interface with organized layout
